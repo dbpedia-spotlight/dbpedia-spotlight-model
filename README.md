@@ -1,7 +1,7 @@
-# DBpedia Spotlight
+# DBpedia Spotlight [![Build Status](https://secure.travis-ci.org/dbpedia-spotlight/dbpedia-spotlight.png?branch=master)](http://travis-ci.org/dbpedia-spotlight/dbpedia-spotlight)
 #### Shedding Light on the Web of Documents
 
-DBpedia Spotlight looks for ~3.5M things of unknown or ~320 known types in text and tries to link them to their global unique identifiers in [DBpedia](http://dbpedia.org). 
+DBpedia Spotlight looks for ~3.5M things of unknown or ~320 known types in text and tries to link them to their global unique identifiers in [DBpedia](http://dbpedia.org).
 
 #### Demonstration
 
@@ -11,7 +11,7 @@ Go to our [Demonstration](http://dbpedia-spotlight.github.io/demo/) page, copy+p
 
 You can use our demonstration [Web Service](http://github.com/dbpedia-spotlight/dbpedia-spotlight/wiki/Web-service) directly from your application.
 
-    curl http://spotlight.sztaki.hu:2222/rest/annotate \
+    curl http://model.dbpedia-spotlight.org/en/annotate  \
       --data-urlencode "text=President Obama called Wednesday on Congress to extend a tax break
       for students included in last year's economic stimulus package, arguing
       that the policy provides more generous assistance." \
@@ -19,7 +19,7 @@ You can use our demonstration [Web Service](http://github.com/dbpedia-spotlight/
 
 or for JSON:
 
-    curl http://spotlight.sztaki.hu:2222/rest/annotate \
+    curl http://model.dbpedia-spotlight.org/en/annotate  \
       --data-urlencode "text=President Obama called Wednesday on Congress to extend a tax break
       for students included in last year's economic stimulus package, arguing
       that the policy provides more generous assistance." \
@@ -28,18 +28,16 @@ or for JSON:
 
 #### Run your own server
 
-If you need service reliability and lower response times, you can run DBpedia Spotlight in your own [In-House Server](https://github.com/dbpedia-spotlight/dbpedia-spotlight/wiki/Installation). Just download a model and Spotlight from [here](http://spotlight.sztaki.hu/downloads/) to get started.
+If you need service reliability and lower response times, you can run DBpedia Spotlight in your own [In-House Server](https://github.com/dbpedia-spotlight/dbpedia-spotlight/wiki/Installation). Just download a model and Spotlight from [here](http://model.dbpedia-spotlight.org) to get started.
 
-    wget http://spotlight.sztaki.hu/downloads/dbpedia-spotlight-latest.jar
-    wget http://spotlight.sztaki.hu/downloads/latest_models/en.tar.gz
+    wget http://model.dbpedia-spotlight.org/dbpedia-spotlight-latest.jar
+    wget http://downloads.dbpedia-spotlight.org/en/2016-04/model/en.tar.gz
     tar xzf en.tar.gz
     java -jar dbpedia-spotlight-latest.jar en http://localhost:2222/rest
 
 #### Models and data
 
-Models and raw data for most languages are available [here](http://spotlight.sztaki.hu/downloads/).
-
-[![Build Status](https://secure.travis-ci.org/dbpedia-spotlight/dbpedia-spotlight.png?branch=master)](http://travis-ci.org/dbpedia-spotlight/dbpedia-spotlight)
+Models and raw data for most languages are available [here](http://model.dbpedia-spotlight.org).
 
 ## Citation
 
@@ -62,7 +60,7 @@ All the original code produced for DBpedia Spotlight is licensed under  [Apache 
 The documentation on this website is shared as [Creative Commons Attribution-ShareAlike 3.0 Unported License](http://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License).
 
 
-More information on citation and how to cite the deprecated Lucene version can be found [here](https://github.com/dbpedia-spotlight/dbpedia-spotlight/wiki/Citation).
+More information on citation and how to cite the deprecated Lucene version can be found [here](http://www.dbpedia-spotlight.org/publications).
 
 ## Documentation
 
@@ -70,4 +68,9 @@ More documentation is available from the [DBpedia Spotlight wiki](https://github
 
 ## FAQ
 
-Check the [FAQ](https://github.com/dbpedia-spotlight/dbpedia-spotlight/wiki/FAQ) here
+Check the [FAQ here](https://github.com/dbpedia-spotlight/dbpedia-spotlight/wiki/faq)
+
+
+## Maintainers
+
+<a href="http://infai.org"><img src="http://infai.org/de/Presse/Logos/files?get=infai_logo_en_rgb_300dpi.jpg" align="left" height="20%" width="20%" ></a>

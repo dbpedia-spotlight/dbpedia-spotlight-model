@@ -116,7 +116,7 @@ public class OutputManager {
         NIFWrapper nif = new NIFWrapper(SpotlightConfiguration.configuration());
         nif.entityFromResource(occList);
         return nif.getNIF(format);
-    	//return NIFOutputFormatter.fromResourceOccs(text, occList, format, prefix);
+
     }
 
     protected void getResourcesXml(List<DBpediaResourceOccurrence> occList, TransformerHandler hd, AttributesImpl atts) throws SAXException {
