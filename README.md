@@ -30,10 +30,10 @@ or for JSON:
 
 If you need service reliability and lower response times, you can run DBpedia Spotlight in your own [In-House Server](https://github.com/dbpedia-spotlight/dbpedia-spotlight/wiki/Installation). Just download a model and Spotlight from [here](http://model.dbpedia-spotlight.org) to get started.
 
-    wget http://model.dbpedia-spotlight.org/dbpedia-spotlight-latest.jar
+    wget http://model.dbpedia-spotlight.org/dbpedia-spotlight-1.0.jar
     wget http://downloads.dbpedia-spotlight.org/en/2016-04/model/en.tar.gz
     tar xzf en.tar.gz
-    java -jar dbpedia-spotlight-latest.jar en http://localhost:2222/rest
+    java -jar dbpedia-spotlight-1.0.jar en http://localhost:2222/rest
 
 #### Models and data
 
