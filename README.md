@@ -1,6 +1,6 @@
 # DBpedia Spotlight [![Build Status](https://secure.travis-ci.org/dbpedia-spotlight/dbpedia-spotlight.png?branch=master)](http://travis-ci.org/dbpedia-spotlight/dbpedia-spotlight)
 
-### General Note
+### General Notes
 
 Since v1.0, DBpedia Spotlight was split into two versions, under the same API,  as follow:
 
