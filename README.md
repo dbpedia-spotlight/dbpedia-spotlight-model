@@ -1,6 +1,6 @@
-# DBpedia Spotlight [![Build Status](https://secure.travis-ci.org/dbpedia-spotlight/dbpedia-spotlight.png?branch=master)](http://travis-ci.org/dbpedia-spotlight/dbpedia-spotlight)
+# DBpedia Spotlight [![Build Status](https://travis-ci.org/dbpedia-spotlight/dbpedia-spotlight-model.svg?branch=master)](https://travis-ci.org/dbpedia-spotlight/dbpedia-spotlight-model)
 
-### General Note
+### General Notes
 
 Since v1.0, DBpedia Spotlight was split into two versions, under the same API,  as follow:
 
@@ -69,8 +69,8 @@ or for JSON:
 
 If you need service reliability and lower response times, you can run DBpedia Spotlight in your own [In-House Server](https://github.com/dbpedia-spotlight/dbpedia-spotlight/wiki/Installation). Just download a model and Spotlight from [here](http://model.dbpedia-spotlight.org) to get started.
 
-    wget http://model.dbpedia-spotlight.org/dbpedia-spotlight-1.0.jar
-    wget http://downloads.dbpedia-spotlight.org/en/2016-04/model/en.tar.gz
+    wget http://downloads.dbpedia-spotlight.org/spotlight/dbpedia-spotlight-1.0.0.jar
+    wget http://downloads.dbpedia-spotlight.org/2016-04/en/model/en.tar.gz
     tar xzf en.tar.gz
     java -jar dbpedia-spotlight-1.0.jar en http://localhost:2222/rest
 
