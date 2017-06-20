@@ -32,6 +32,8 @@ import org.dbpedia.spotlight.filter.visitor.FilterOccsImpl;
 import org.dbpedia.spotlight.filter.visitor.OccsFilter;
 import org.dbpedia.spotlight.model.*;
 import org.dbpedia.spotlight.spot.Spotter;
+import org.dbpedia.spotlight.web.rest.common.AnnotationUnit;
+import org.dbpedia.spotlight.web.rest.formats.JSONOutputManager;
 
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -324,13 +326,22 @@ public class SpotlightInterface {
                           String clientIp,
                           String spotterName,
                           String disambiguator) throws Exception {
-        String result;
-        String xml = getXML(text, inUrl, confidence, support, dbpediaTypesString, sparqlQuery, policy, coreferenceResolution, clientIp, spotterName, disambiguator);
-        result = outputManager.xml2json(xml);
-        LOG.info("JSON format");
-        LOG.debug("****************************************************************");
 
-        return result;
+        String textToProcess = ServerUtils.getTextToProcess(text, inUrl);
+        List<DBpediaResourceOccurrence> occs = getOccurrences(textToProcess, confidence, support, dbpediaTypesString,
+                sparqlQuery, policy, coreferenceResolution, clientIp, spotterName, disambiguator);
+
+        AnnotationUnit annotationUnit = new AnnotationUnit();
+
+        annotationUnit.setText(textToProcess);
+        annotationUnit.setConfidence(String.valueOf(confidence));
+        annotationUnit.setSupport(String.valueOf(support));
+        annotationUnit.setPolicy(policy);
+        annotationUnit.setSparql(sparqlQuery);
+        annotationUnit.setTypes(dbpediaTypesString);
+        annotationUnit.buildResources(occs);
+
+        return JSONOutputManager.parse(annotationUnit);
     }
 
 }
