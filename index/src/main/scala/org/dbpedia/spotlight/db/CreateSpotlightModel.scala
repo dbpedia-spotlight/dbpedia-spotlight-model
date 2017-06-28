@@ -47,7 +47,7 @@ object CreateSpotlightModel {
         new File(args(2)), // output folder
         if (args(3) equals "None") None else Some(new File(args(3))), // openNLP
         new File(args(4)), // stopwords
-        if (args(5) equals "None") new Stemmer() else new SnowballStemmer(args(5)) // stemmer
+        if ((args(5) equals "None") || (args (5) equals "NoneStemmer")) new Stemmer() else new SnowballStemmer(args(5)) // stemmer
         )
     } catch {
       case e: Exception => {
