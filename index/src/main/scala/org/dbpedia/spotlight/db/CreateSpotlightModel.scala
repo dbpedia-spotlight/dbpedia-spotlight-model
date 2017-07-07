@@ -46,7 +46,7 @@ object CreateSpotlightModel {
         new File(args(1)), // raw data folder
         new File(args(2)), // output folder
         if (args(3) equals "None") None else Some(new File(args(3))), // openNLP
-        new File(args(4)), // stopwords
+        if (args(4) equals "None") None else new File(args(4)), // stopwords
         if ((args(5) equals "None") || (args (5) equals "NoneStemmer")) new Stemmer() else new SnowballStemmer(args(5)) // stemmer
         )
     } catch {
@@ -72,10 +72,10 @@ object CreateSpotlightModel {
       }
     }
 
-    if(!outputFolder.mkdir()) {
-      System.err.println("Folder %s already exists, I am too afraid to overwrite it!".format(outputFolder.toString))
-      System.exit(1)
-    }
+//    if(!outputFolder.mkdir()) {
+//      System.err.println("Folder %s already exists, I am too afraid to overwrite it!".format(outputFolder.toString))
+//      System.exit(1)
+//    }
 
     FileUtils.copyFile(stopwordsFile, new File(outputFolder, "stopwords.list"))
 
@@ -123,6 +123,7 @@ object CreateSpotlightModel {
       }
 
     }
+    val arabic = lang.equals("ar")
 
     val rawTokenizer: StringTokenizer = if (opennlpFolder.isDefined) {
       val opennlpOut = new File(outputFolder, OPENNLP_FOLDER)
@@ -133,6 +134,8 @@ object CreateSpotlightModel {
         stemmer
       )
 
+    } else if(arabic) {
+      new StanfordNLPTokenizer(stemmer)
     } else {
       new LanguageIndependentStringTokenizer(locale, stemmer)
     }
