@@ -51,7 +51,6 @@ public class StanfordNLPTokenizer extends BaseStringTokenizer {
         this.corenlp.annotate(document);
 
         List<CoreMap> sentences = document.get(CoreAnnotations.SentencesAnnotation.class);
-        System.out.println(sentences.size());
 
         List<String> words = new ArrayList<>();
         for(CoreMap sentence: sentences) {
