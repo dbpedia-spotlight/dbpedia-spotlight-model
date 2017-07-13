@@ -17,11 +17,11 @@ import java.util.*;
 /**
  * Created by wlu on 06.07.17.
  */
-public class StanfordNLPTokenizer extends BaseStringTokenizer {
+public class ArabicTokenizer extends BaseStringTokenizer {
     private StanfordCoreNLP corenlp;
     private Set<String> stopwords = new HashSet<>();
 
-    public StanfordNLPTokenizer(Stemmer stemmer) {
+    public ArabicTokenizer(Stemmer stemmer) {
         super(stemmer);
         Properties props = new Properties();
         try {
@@ -29,14 +29,14 @@ public class StanfordNLPTokenizer extends BaseStringTokenizer {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/arabic-stopwords.txt")))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                stopwords.add(line);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try (BufferedReader br = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/arabic-stopwords.txt")))) {
+//            String line;
+//            while ((line = br.readLine()) != null) {
+//                stopwords.add(line);
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
         this.corenlp = new StanfordCoreNLP(props);
     }

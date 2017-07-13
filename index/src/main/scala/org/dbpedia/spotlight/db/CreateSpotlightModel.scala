@@ -123,9 +123,10 @@ object CreateSpotlightModel {
       }
 
     }
-    val arabic = lang.equals("ar")
 
-    val rawTokenizer: StringTokenizer = if (opennlpFolder.isDefined) {
+    val rawTokenizer: StringTokenizer = if(lang.equals("ar")) {
+      new ArabicTokenizer(stemmer)
+    } else if (opennlpFolder.isDefined) {
       val opennlpOut = new File(outputFolder, OPENNLP_FOLDER)
       val onlpTokenizer = new TokenizerME(new TokenizerModel(new FileInputStream(new File(opennlpOut, "token.bin"))))
 
@@ -134,9 +135,7 @@ object CreateSpotlightModel {
         stemmer
       )
 
-    } else if(arabic) {
-      new StanfordNLPTokenizer(stemmer)
-    } else {
+    } else  {
       new LanguageIndependentStringTokenizer(locale, stemmer)
     }
 
