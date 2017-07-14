@@ -9,19 +9,17 @@ import opennlp.tools.util.Span;
 import org.dbpedia.spotlight.db.model.Stemmer;
 import scala.collection.Seq;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.*;
 
 /**
  * Created by wlu on 06.07.17.
  */
-public class ArabicTokenizer extends BaseStringTokenizer {
+public class ArabicStringTokenizer extends BaseStringTokenizer {
     private StanfordCoreNLP corenlp;
     private Set<String> stopwords = new HashSet<>();
 
-    public ArabicTokenizer(Stemmer stemmer) {
+    public ArabicStringTokenizer(Stemmer stemmer, File stopwordsFile) {
         super(stemmer);
         Properties props = new Properties();
         try {
@@ -29,14 +27,14 @@ public class ArabicTokenizer extends BaseStringTokenizer {
         } catch (IOException e) {
             e.printStackTrace();
         }
-//        try (BufferedReader br = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/arabic-stopwords.txt")))) {
-//            String line;
-//            while ((line = br.readLine()) != null) {
-//                stopwords.add(line);
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+        try (BufferedReader br = new BufferedReader(new FileReader(stopwordsFile))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                stopwords.add(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         this.corenlp = new StanfordCoreNLP(props);
     }
@@ -56,7 +54,9 @@ public class ArabicTokenizer extends BaseStringTokenizer {
         for(CoreMap sentence: sentences) {
             for (CoreLabel token: sentence.get(CoreAnnotations.TokensAnnotation.class)) {
                 String word = token.word();
-                words.add(word);
+                if (!stopwords.contains(word)){
+                    words.add(word);
+                }
             }
         }
         return words;
