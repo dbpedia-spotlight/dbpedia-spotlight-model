@@ -34,17 +34,16 @@ public class ArabicTextTokenizer extends BaseTextTokenizer {
         List<Token> toks = new ArrayList<>();
 
         for(CoreMap sentence: this.arabicStringTokenizer.getAnnotation(text.text())) {
-            int sentOffset = sentence.get(CoreAnnotations.CharacterOffsetBeginAnnotation.class);
             List<CoreLabel> tokens = sentence.get(CoreAnnotations.TokensAnnotation.class);
             for (int i = 0; i < tokens.size(); i++) {
                 CoreLabel token = tokens.get(i);
                 String word = token.word();
                 int offset = token.get(CoreAnnotations.CharacterOffsetBeginAnnotation.class);
                 Token tok;
-                if (stopwords.contains(word)) {
-                    tok = new Token(word, sentOffset+offset, getStemmedTokenType(word));
+                if (!stopwords.contains(word)) {
+                    tok = new Token(word, offset, getStemmedTokenType(word));
                 } else {
-                    tok = new Token(word, sentOffset+offset, TokenType.STOPWORD());
+                    tok = new Token(word, offset, TokenType.STOPWORD());
                 }
 
                 if (i == tokens.size()-1) {
