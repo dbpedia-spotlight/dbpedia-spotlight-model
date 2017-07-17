@@ -93,7 +93,7 @@ object SpotlightModel {
 
     //Load the stemmer from the model file:
     def stemmer(): Stemmer = properties.getProperty("stemmer") match {
-      case s: String if s equals "None" => null
+      case s: String if s equals "None" => new Stemmer()
       case s: String => new SnowballStemmer(s)
     }
 
