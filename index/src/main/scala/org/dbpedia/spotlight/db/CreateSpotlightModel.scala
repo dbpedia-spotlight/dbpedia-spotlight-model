@@ -67,10 +67,10 @@ object CreateSpotlightModel {
       }
     }
 
-//    if(!outputFolder.mkdir()) {
-//      System.err.println("Folder %s already exists, I am too afraid to overwrite it!".format(outputFolder.toString))
-//      System.exit(1)
-//    }
+    if(!outputFolder.mkdir()) {
+      System.err.println("Folder %s already exists, I am too afraid to overwrite it!".format(outputFolder.toString))
+      System.exit(1)
+    }
 
     FileUtils.copyFile(stopwordsFile, new File(outputFolder, "stopwords.list"))
 
@@ -119,9 +119,7 @@ object CreateSpotlightModel {
 
     }
 
-    val rawTokenizer: StringTokenizer = if(lang.equals("ar")) {
-      new ArabicStringTokenizer(stemmer, new File(outputFolder, "stopwords.list"))
-    } else if (opennlpFolder.isDefined) {
+    val rawTokenizer: StringTokenizer = if (opennlpFolder.isDefined) {
       val opennlpOut = new File(outputFolder, OPENNLP_FOLDER)
       val onlpTokenizer = new TokenizerME(new TokenizerModel(new FileInputStream(new File(opennlpOut, "token.bin"))))
 
