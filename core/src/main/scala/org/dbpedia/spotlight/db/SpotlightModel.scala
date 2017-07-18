@@ -12,7 +12,7 @@ import org.dbpedia.spotlight.db.memory.{MemoryStore, MemoryVectorStore}
 import org.dbpedia.spotlight.db.model._
 import org.dbpedia.spotlight.db.similarity.{ContextSimilarity, GenerativeContextSimilarity, NoContextSimilarity, VectorContextSimilarity}
 import org.dbpedia.spotlight.db.stem.SnowballStemmer
-import org.dbpedia.spotlight.db.tokenize.{ArabicTextTokenizer, LanguageIndependentTokenizer, OpenNLPTokenizer}
+import org.dbpedia.spotlight.db.tokenize.{LanguageIndependentTokenizer, OpenNLPTokenizer}
 import org.dbpedia.spotlight.disambiguate.ParagraphDisambiguatorJ
 import org.dbpedia.spotlight.disambiguate.mixtures.UnweightedMixture
 import org.dbpedia.spotlight.exceptions.ConfigurationException
@@ -93,7 +93,7 @@ object SpotlightModel {
 
     //Load the stemmer from the model file:
     def stemmer(): Stemmer = properties.getProperty("stemmer") match {
-      case s: String if ((s equals "None") || (s equals "NoneStemmer")) => new Stemmer()
+      case s: String if (s equals "None") || (s equals "NoneStemmer") => new Stemmer()
       case s: String => new SnowballStemmer(s)
     }
 
@@ -111,9 +111,7 @@ object SpotlightModel {
     val cores = (1 to c)
 
     val locale = properties.getProperty("locale");
-    val tokenizer: TextTokenizer = if(locale.startsWith("ar")) {
-      new ArabicTextTokenizer(tokenTypeStore, stemmer, new File(modelFolder, "stopwords.list"))
-    } else if(new File(modelFolder, "opennlp").exists()) {
+    val tokenizer: TextTokenizer = if(new File(modelFolder, "opennlp").exists()) {
 
       //Create the tokenizer:
       val posTagger = new File(modelFolder, "opennlp/pos-maxent.bin")
