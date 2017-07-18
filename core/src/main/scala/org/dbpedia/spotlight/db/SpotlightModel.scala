@@ -93,7 +93,7 @@ object SpotlightModel {
 
     //Load the stemmer from the model file:
     def stemmer(): Stemmer = properties.getProperty("stemmer") match {
-      case s: String if s equals "None" => null
+      case s: String if (s equals "None") || (s equals "NoneStemmer") => new Stemmer()
       case s: String => new SnowballStemmer(s)
     }
 
@@ -110,6 +110,7 @@ object SpotlightModel {
     val c = properties.getProperty("opennlp_parallel", Runtime.getRuntime.availableProcessors().toString).toInt
     val cores = (1 to c)
 
+    val locale = properties.getProperty("locale");
     val tokenizer: TextTokenizer = if(new File(modelFolder, "opennlp").exists()) {
 
       //Create the tokenizer:

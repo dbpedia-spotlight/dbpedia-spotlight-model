@@ -1,23 +1,18 @@
 package org.dbpedia.spotlight.db
 
-import io._
-import java.io.{FileOutputStream, FileInputStream, File}
-import org.dbpedia.spotlight.db.memory.{MemoryQuantizedCountStore, MemoryStore}
-import model.{TextTokenizer, StringTokenizer, Stemmer}
-import org.dbpedia.spotlight.log.SpotlightLog
-import scala.io.Source
-import org.tartarus.snowball.SnowballProgram
+import java.io.{File, FileInputStream, FileOutputStream}
 import java.util.{Locale, Properties}
-import org.dbpedia.spotlight.io.WikipediaHeldoutCorpus
+
+import opennlp.tools.sentdetect.{SentenceDetectorME, SentenceModel}
+import opennlp.tools.tokenize.{TokenizerME, TokenizerModel}
 import org.apache.commons.io.FileUtils
-import opennlp.tools.tokenize.{TokenizerModel, TokenizerME}
-import opennlp.tools.sentdetect.{SentenceModel, SentenceDetectorME}
-import opennlp.tools.postag.{POSModel, POSTaggerME}
-import opennlp.tools.chunker.ChunkerModel
-import stem.SnowballStemmer
-import tokenize._
-import scala.Some
-import scala.collection.immutable.HashMap
+import org.dbpedia.spotlight.db.io._
+import org.dbpedia.spotlight.db.memory.{MemoryQuantizedCountStore, MemoryStore}
+import org.dbpedia.spotlight.db.model.{Stemmer, StringTokenizer, TextTokenizer}
+import org.dbpedia.spotlight.db.stem.SnowballStemmer
+import org.dbpedia.spotlight.db.tokenize._
+import org.dbpedia.spotlight.log.SpotlightLog
+
 import scala.collection.mutable
 
 /**
@@ -46,7 +41,7 @@ object CreateSpotlightModel {
         new File(args(1)), // raw data folder
         new File(args(2)), // output folder
         if (args(3) equals "None") None else Some(new File(args(3))), // openNLP
-        new File(args(4)), // stopwords
+        if (args(4) equals "None") None else new File(args(4)), // stopwords
         if ((args(5) equals "None") || (args (5) equals "NoneStemmer")) new Stemmer() else new SnowballStemmer(args(5)) // stemmer
         )
     } catch {
@@ -133,7 +128,7 @@ object CreateSpotlightModel {
         stemmer
       )
 
-    } else {
+    } else  {
       new LanguageIndependentStringTokenizer(locale, stemmer)
     }
 
