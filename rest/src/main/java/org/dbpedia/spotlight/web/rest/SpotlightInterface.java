@@ -97,21 +97,21 @@ public class SpotlightInterface {
                          String clientIp,
                          String spotterName,
                          String disambiguatorName) {
-        LOG.info("******************************** Parameters ********************************");
-        LOG.info("API: " + getApiName());
-        LOG.info("client ip: " + clientIp);
-        LOG.info("text: " + textString);
+        LOG.debug("******************************** Parameters ********************************");
+        LOG.debug("API: " + getApiName());
+        LOG.debug("client ip: " + clientIp);
+        LOG.debug("text: " + textString);
         if (textString != null) {
-            LOG.info("text length in chars: " + textString.length());
+            LOG.debug("text length in chars: " + textString.length());
         }
-        LOG.info("confidence: " + String.valueOf(confidence));
-        LOG.info("support: " + String.valueOf(support));
-        LOG.info("types: " + ontologyTypesString);
-        LOG.info("sparqlQuery: " + sparqlQuery);
-        LOG.info("policy: " + policyIsBlacklist(policy));
-        LOG.info("coreferenceResolution: " + String.valueOf(coreferenceResolution));
-        LOG.info("spotter: " + spotterName);
-        LOG.info("disambiguator: " + disambiguatorName);
+        LOG.debug("confidence: " + String.valueOf(confidence));
+        LOG.debug("support: " + String.valueOf(support));
+        LOG.debug("types: " + ontologyTypesString);
+        LOG.debug("sparqlQuery: " + sparqlQuery);
+        LOG.debug("policy: " + policyIsBlacklist(policy));
+        LOG.debug("coreferenceResolution: " + String.valueOf(coreferenceResolution));
+        LOG.debug("spotter: " + spotterName);
+        LOG.debug("disambiguator: " + disambiguatorName);
 
     }
 
@@ -199,7 +199,7 @@ public class SpotlightInterface {
             List<DBpediaResourceOccurrence> occs = getOccurrences(textToProcess, confidence, support, dbpediaTypesString, sparqlQuery, policy, coreferenceResolution, clientIp, spotter, disambiguator);
             result = outputManager.makeHTML(textToProcess, occs);
         } catch (InputException e) { //TODO throw exception up to Annotate for WebApplicationException to handle.
-            LOG.info("ERROR: " + e.getMessage());
+            LOG.error("ERROR: " + e.getMessage());
             result = "<html><body><b>ERROR:</b> <i>" + e.getMessage() + "</i></body></html>";
         }
         LOG.info("HTML format");
@@ -226,7 +226,7 @@ public class SpotlightInterface {
             List<DBpediaResourceOccurrence> occs = getOccurrences(textToProcess, confidence, support, dbpediaTypesString, sparqlQuery, policy, coreferenceResolution, clientIp, spotter, disambiguator);
             result = outputManager.makeRDFa(textToProcess, occs);
         } catch (InputException e) { //TODO throw exception up to Annotate for WebApplicationException to handle.
-            LOG.info("ERROR: " + e.getMessage());
+            LOG.error("ERROR: " + e.getMessage());
             result = "<html><body><b>ERROR:</b> <i>" + e.getMessage() + "</i></body></html>";
         }
         LOG.info("RDFa format");
@@ -251,7 +251,7 @@ public class SpotlightInterface {
         List<DBpediaResourceOccurrence> occs = getOccurrences(textToProcess, confidence, support, dbpediaTypesString, sparqlQuery, policy, coreferenceResolution, clientIp, spotter, disambiguator);
         result = outputManager.makeXML(textToProcess, occs, confidence, support, dbpediaTypesString, sparqlQuery, policy, coreferenceResolution);
 
-        LOG.info("XML format");
+        LOG.debug("XML format");
         LOG.debug("****************************************************************");
 
         return result;
@@ -310,7 +310,7 @@ public class SpotlightInterface {
 
         List<DBpediaResourceOccurrence> occs = getOccurrences(textToProcess, confidence, support, dbpediaTypesString, sparqlQuery, policy, coreferenceResolution, clientIp, spotter, disambiguator);
         result = outputManager.makeXML(textToProcess, occs, confidence, support, dbpediaTypesString, sparqlQuery, policy, coreferenceResolution);
-        LOG.info("XML format");
+        LOG.debug("XML format");
         LOG.debug("****************************************************************");
         return result;
     }
