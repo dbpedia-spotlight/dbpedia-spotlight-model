@@ -87,10 +87,10 @@ public class Candidates {
         List<SurfaceFormOccurrence> entityMentions = spotter.extract(textObject);
         if (entityMentions.size()==0) return annotation; //nothing to disambiguate
         Paragraph paragraph = Factory.paragraph().fromJ(entityMentions);
-        LOG.info(String.format("Spotted %d entity mentions.",entityMentions.size()));
+        LOG.debug(String.format("Spotted %d entity mentions.",entityMentions.size()));
 
         Map<SurfaceFormOccurrence,List<DBpediaResourceOccurrence>> entityCandidates = disambiguator.bestK(paragraph,k);
-        LOG.info(String.format("Disambiguated %d candidates with %s.",entityCandidates.size(),disambiguator.name()));
+        LOG.debug(String.format("Disambiguated %d candidates with %s.",entityCandidates.size(),disambiguator.name()));
 
         Enumeration.Value listColor = blacklist ? FilterPolicy$.MODULE$.Blacklist() : FilterPolicy$.MODULE$.Whitelist();
 
@@ -183,7 +183,7 @@ public class Candidates {
         try {
             String textToProcess = ServerUtils.getTextToProcess(text, inUrl);
             Annotation a = getAnnotation(textToProcess, confidence, support, dbpediaTypes, sparqlQuery, policy, coreferenceResolution, spotter, disambiguatorName, clientIp);
-            LOG.info("XML format");
+            LOG.debug("XML format");
             String content = a.toXML();
             return ServerUtils.ok(content);
         } catch (Exception e) {
@@ -209,7 +209,7 @@ public class Candidates {
         try {
             String textToProcess = ServerUtils.getTextToProcess(text, inUrl);
             Annotation a = getAnnotation(textToProcess, confidence, support, dbpediaTypes, sparqlQuery, policy, coreferenceResolution, spotter, disambiguatorName, clientIp);
-            LOG.info("JSON format");
+            LOG.debug("JSON format");
             String content = a.toJSON();
             return ServerUtils.ok(content);
         } catch (Exception e) {
@@ -299,7 +299,7 @@ public class Candidates {
                                     String disambiguatorName,
                                     String clientIp) throws SearchException, InputException, ItemNotFoundException, SpottingException, MalformedURLException, BoilerpipeProcessingException {
 
-        LOG.info("******************************** Parameters ********************************");
+        LOG.debug("******************************** Parameters ********************************");
         //announceAPI();
 
         boolean blacklist = false;
@@ -310,17 +310,17 @@ public class Candidates {
         else {
             policy = "whitelist";
         }
-        LOG.info("client ip: " + clientIp);
-        LOG.info("text to be processed: " + text);
-        LOG.info("text length in chars: "+ text.length());
-        LOG.info("confidence: "+String.valueOf(confidence));
-        LOG.info("support: "+String.valueOf(support));
-        LOG.info("types: "+ontologyTypesString);
-        LOG.info("sparqlQuery: "+ sparqlQuery);
-        LOG.info("policy: "+policy);
-        LOG.info("coreferenceResolution: "+String.valueOf(coreferenceResolution));
-        LOG.info("spotter: "+ spotterName);
-        LOG.info("disambiguator: " + disambiguatorName);
+        LOG.debug("client ip: " + clientIp);
+        LOG.debug("text to be processed: " + text);
+        LOG.debug("text length in chars: "+ text.length());
+        LOG.debug("confidence: "+String.valueOf(confidence));
+        LOG.debug("support: "+String.valueOf(support));
+        LOG.debug("types: "+ontologyTypesString);
+        LOG.debug("sparqlQuery: "+ sparqlQuery);
+        LOG.debug("policy: "+policy);
+        LOG.debug("coreferenceResolution: "+String.valueOf(coreferenceResolution));
+        LOG.debug("spotter: "+ spotterName);
+        LOG.debug("disambiguator: " + disambiguatorName);
 
         /* Validating parameters */
 
@@ -332,7 +332,7 @@ public class Candidates {
         if (Server.getTokenizer() == null && disambiguatorName==SpotlightConfiguration.DisambiguationPolicy.Default.name()
                 && text.length() > 1200) {
             disambiguatorName = SpotlightConfiguration.DisambiguationPolicy.Document.name();
-            LOG.info(String.format("Text length: %d. Using %s to disambiguate.",text.length(),disambiguatorName));
+            LOG.debug(String.format("Text length: %d. Using %s to disambiguate.",text.length(),disambiguatorName));
         }
 
         Spotter spotter = Server.getSpotter(spotterName);
