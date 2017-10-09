@@ -32,7 +32,7 @@ class SupportFilter(val targetSupport : Int) extends AnnotationFilter with Filte
             Some(occ)
         }
         else{
-            SpotlightLog.info(this.getClass, "filtered out by support (%d<%d): %s", occ.resource.support, targetSupport, occ)
+            SpotlightLog.debug(this.getClass, "filtered out by support (%d<%d): %s", occ.resource.support, targetSupport, occ)
             None
         }
     }

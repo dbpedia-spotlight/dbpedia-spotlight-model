@@ -31,7 +31,7 @@ class TypeFilter(var ontologyTypes : List[OntologyType], val blacklistOrWhitelis
     else
         ontologyTypes = ontologyTypes.filter(_.typeID.trim.nonEmpty)
 
-    if(ontologyTypes.isEmpty) SpotlightLog.info(this.getClass, "types are empty: showing all types")  // see comment below
+    if(ontologyTypes.isEmpty) SpotlightLog.debug(this.getClass, "types are empty: showing all types")  // see comment below
 
 
     private val acceptable = blacklistOrWhitelist match {

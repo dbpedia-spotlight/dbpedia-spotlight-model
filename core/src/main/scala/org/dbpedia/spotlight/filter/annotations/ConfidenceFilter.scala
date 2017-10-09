@@ -31,7 +31,7 @@ class PercentageOfSecondFilter(val confidence : Double) extends AnnotationFilter
 
     override def touchOcc(occ : DBpediaResourceOccurrence) : Option[DBpediaResourceOccurrence] = {
         if(occ.percentageOfSecondRank > (1-squaredConfidence)) {
-            SpotlightLog.info(this.getClass, "(c=%s) filtered out by threshold of second ranked percentage (%.3f>%.3f): %s", confidence,occ.percentageOfSecondRank, 1-squaredConfidence, occ)
+            SpotlightLog.debug(this.getClass, "(c=%s) filtered out by threshold of second ranked percentage (%.3f>%.3f): %s", confidence,occ.percentageOfSecondRank, 1-squaredConfidence, occ)
             None
         }
         else {
@@ -51,7 +51,7 @@ class ConfidenceFilter(val simThresholds : List[Double], val confidence : Double
     val simThreshold = if (simThresholds.length==0) confidence else simThresholds(math.max(((simThresholds.length-1)*confidence).round.toInt, 0))
     override def touchOcc(occ : DBpediaResourceOccurrence) : Option[DBpediaResourceOccurrence] = {
         if(occ.similarityScore < simThreshold) {
-            SpotlightLog.info(this.getClass, "(c=%s) filtered out by similarity score threshold (%.3f<%.3f): %s", confidence, occ.similarityScore, simThreshold, occ)
+            SpotlightLog.debug(this.getClass, "(c=%s) filtered out by similarity score threshold (%.3f<%.3f): %s", confidence, occ.similarityScore, simThreshold, occ)
             None
         }
         else {
