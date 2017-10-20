@@ -55,7 +55,7 @@ public class ServerUtils {
         if (text != null && !text.equals("")) {
             textToProcess = text;
         } else if (inUrl != null && !inUrl.equals("")) {
-            LOG.info("Parsing URL to get main content");
+            LOG.debug("Parsing URL to get main content");
             try {
                 URL url = new URL(inUrl);
                 InputSource is = new InputSource();

@@ -161,7 +161,7 @@ public class SpotlightInterface {
         if (Server.getTokenizer() == null && disambiguatorName.equals(SpotlightConfiguration.DisambiguationPolicy.Default.name())
                 && textString.length() > maxLengthForOccurrenceCentric) {
             disambiguatorName = SpotlightConfiguration.DisambiguationPolicy.Document.name();
-            LOG.info(String.format("Text length > %d. Using %s to disambiguate.", maxLengthForOccurrenceCentric, disambiguatorName));
+            LOG.debug(String.format("Text length > %d. Using %s to disambiguate.", maxLengthForOccurrenceCentric, disambiguatorName));
         }
         ParagraphDisambiguatorJ disambiguator = Server.getDisambiguator(disambiguatorName);
         List<DBpediaResourceOccurrence> occList = disambiguate(spots, disambiguator);
@@ -202,7 +202,7 @@ public class SpotlightInterface {
             LOG.error("ERROR: " + e.getMessage());
             result = "<html><body><b>ERROR:</b> <i>" + e.getMessage() + "</i></body></html>";
         }
-        LOG.info("HTML format");
+        LOG.debug("HTML format");
         LOG.debug("****************************************************************");
         return result;
     }
@@ -229,7 +229,7 @@ public class SpotlightInterface {
             LOG.error("ERROR: " + e.getMessage());
             result = "<html><body><b>ERROR:</b> <i>" + e.getMessage() + "</i></body></html>";
         }
-        LOG.info("RDFa format");
+        LOG.debug("RDFa format");
         LOG.debug("****************************************************************");
         return result;
     }
@@ -286,7 +286,7 @@ public class SpotlightInterface {
         List<DBpediaResourceOccurrence> occs = getOccurrences(textToProcess, confidence, support, dbpediaTypesString, sparqlQuery, policy, coreferenceResolution, clientIp, spotter, disambiguator);
         result = outputManager.makeNIF(textToProcess, occs, format, prefix);
 
-        LOG.info("NIF format: " + format);
+        LOG.debug("NIF format: " + format);
         LOG.debug("****************************************************************");
 
         return result;
