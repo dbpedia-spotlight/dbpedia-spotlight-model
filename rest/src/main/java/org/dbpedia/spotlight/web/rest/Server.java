@@ -94,12 +94,22 @@ public class Server {
         initParams.put("com.sun.jersey.config.property.packages", "org.dbpedia.spotlight.web.rest.resources");
         initParams.put("com.sun.jersey.config.property.WadlGeneratorConfig", "org.dbpedia.spotlight.web.rest.wadl.ExternalUriWadlGeneratorConfig");
 
+        // Configurable thread sizing
+        int maxThreads = Integer.parseInt(System.getProperty("threads.max", "5"));
+        int coreThreads = Integer.parseInt(System.getProperty("threads.core", "5"));
+        int maxPostSize = Integer.parseInt(System.getProperty("post.size.max", "2097152")); // 2MB
 
         SelectorThread threadSelector = GrizzlyWebContainerFactory.create(serverURI, initParams);
+        threadSelector.setMaxThreads(maxThreads);
+        threadSelector.setCoreThreads(coreThreads);
+        threadSelector.setMaxPostSize(maxPostSize);
         threadSelector.start();
 
         System.err.println("Server started in " + System.getProperty("user.dir") + " listening on " + serverURI);
 
+        LOG.info(String.format(" Core threads: %d", threadSelector.getCoreThreads()));
+        LOG.info(String.format("  Max threads: %d", threadSelector.getMaxThreads()));
+        LOG.info(String.format("Max POST size: %d", threadSelector.getMaxPostSize()));
 
         while(running) {
             Thread.sleep(100);
