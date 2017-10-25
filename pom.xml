@@ -26,8 +26,8 @@
         <dbpedia.spotlight.version>1.0</dbpedia.spotlight.version>
 
         <java.compiler.version>1.8</java.compiler.version>
-        <scala.compiler.version>2.10.4</scala.compiler.version>
-        <jersey.version>1.19.3</jersey.version>
+        <scala.compiler.version>2.10.6</scala.compiler.version>
+        <jersey.version>1.19.4</jersey.version>
 
         <heapspace.Xmx.compiler>-Xmx1g</heapspace.Xmx.compiler>
         <heapspace.Xmx.indexer>-Xmx1g</heapspace.Xmx.indexer>
@@ -414,7 +414,7 @@
             <dependency>
                 <groupId>com.sun.grizzly</groupId>
                 <artifactId>grizzly-servlet-webserver</artifactId>
-                <version>1.9.48</version>
+                <version>1.9.65</version>
                 <!--
                      License: CDDL v.1.1 andd GPL v.2
                 -->
