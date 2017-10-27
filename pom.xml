@@ -348,14 +348,6 @@
                 -->
             </dependency>
 
-            <dependency>
-                <groupId>xom</groupId>
-                <artifactId>xom</artifactId>
-                <version>1.2.5</version>
-                <!--
-                     License: LGPL
-                -->
-            </dependency>
 
             <dependency>
                 <groupId>net.sf.json-lib</groupId>

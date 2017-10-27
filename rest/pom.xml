@@ -91,16 +91,6 @@
         </dependency>
 
         <dependency>
-            <groupId>xom</groupId>
-            <artifactId>xom</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>xerces</groupId>
-            <artifactId>xmlParserAPIs</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>xml-apis</groupId>
             <artifactId>xml-apis</artifactId>
         </dependency>
@@ -114,11 +104,6 @@
         <dependency>
             <groupId>com.thoughtworks.xstream</groupId>
             <artifactId>xstream</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.codehaus.jettison</groupId>
-            <artifactId>jettison</artifactId>
         </dependency>
 
         <dependency>
