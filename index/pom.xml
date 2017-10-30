@@ -122,11 +122,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.apache.mahout</groupId>
-            <artifactId>mahout-collections</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>com.esotericsoftware.kryo</groupId>
             <artifactId>kryo</artifactId>
         </dependency>
