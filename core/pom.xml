@@ -90,11 +90,6 @@
         </dependency>
 
         <dependency>
-            <groupId>net.liftweb</groupId>
-            <artifactId>lift-json_2.10</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
         </dependency>

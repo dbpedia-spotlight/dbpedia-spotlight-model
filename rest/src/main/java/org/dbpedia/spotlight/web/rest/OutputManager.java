@@ -21,7 +21,6 @@
 
 package org.dbpedia.spotlight.web.rest;
 
-import net.sf.json.xml.XMLSerializer;
 import org.dbpedia.spotlight.exceptions.OutputException;
 import org.dbpedia.spotlight.model.DBpediaResourceOccurrence;
 import org.dbpedia.spotlight.model.OntologyType;
@@ -230,17 +229,6 @@ public class OutputManager {
             throw new OutputException("Error creating XML output.",e);
         }
         return xmlDoc;
-    }
-
-    private XMLSerializer xmlSerializer = new XMLSerializer();
-    protected String xml2json(String xmlDoc) throws OutputException {
-        String json = "";
-        try {
-            json = xmlSerializer.read(xmlDoc).toString(2);
-        } catch (Exception e) {
-            throw new OutputException("Error converting XML to JSON.", e);
-        }
-        return json;
     }
 
     private WebCodeFormatter htmlFormat = new HTMLFormatter();
