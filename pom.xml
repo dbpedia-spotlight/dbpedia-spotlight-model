@@ -675,12 +675,6 @@
             </dependency>
 
             <dependency>
-                <groupId>org.mortbay.jetty</groupId>
-                <artifactId>servlet-api</artifactId>
-                <version>2.5.20110712</version>
-            </dependency>
-
-            <dependency>
                 <groupId>org.wiki.harvester.dependency</groupId>
                 <artifactId>sztakipedia-parser-0.1.1b</artifactId>
                 <version>1.0</version>
@@ -714,7 +708,7 @@
             <dependency>
                 <groupId>org.mockito</groupId>
                 <artifactId>mockito-core</artifactId>
-                <version>2.7.22</version>
+                <version>2.12.0</version>
                 <!--
                 License: MIT
                 -->
