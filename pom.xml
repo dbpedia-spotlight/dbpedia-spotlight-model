@@ -348,22 +348,18 @@
                      License: CDDL v.1.1 andd GPL v.2
                  -->
             </dependency>
-            <dependency>
-                <groupId>com.sun.jersey</groupId>
-                <artifactId>jersey-bundle</artifactId>
-                <version>${jersey.version}</version>
-                <!--
-                     License: CDDL v.1.1 andd GPL v.2
-                 -->
-            </dependency>
 
             <dependency>
                 <groupId>com.sun.grizzly</groupId>
-                <artifactId>grizzly-servlet-webserver</artifactId>
+                <artifactId>grizzly-http</artifactId>
                 <version>1.9.65</version>
-                <!--
-                     License: CDDL v.1.1 andd GPL v.2
-                -->
+            </dependency>
+
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>4.0.0</version>
+                <scope>provided</scope>
             </dependency>
 
             <dependency>
@@ -418,15 +414,6 @@
                 <version>2.2.5</version>
                 <!--
                     License: Apache Software License, Version 2.0
-                -->
-            </dependency>
-
-            <dependency>
-                <groupId>trove</groupId>
-                <artifactId>trove</artifactId>
-                <version>1.1-beta-5</version>
-                <!--
-                  License: Lesser GNU Public License (LGPL)
                 -->
             </dependency>
 
@@ -504,14 +491,6 @@
                     License: Apache Software License, Version 2.0
                 -->
             </dependency>
-            <dependency>
-                <groupId>stax</groupId>
-                <artifactId>stax-api</artifactId>
-                <version>1.0.1</version>
-                <!--
-                    License: Apache Software License, Version 2.0
-                -->
-            </dependency>
 
             <dependency>
                 <groupId>com.thoughtworks.xstream</groupId>
@@ -525,15 +504,6 @@
                 <version>3.7.3</version>
                 <!--
                   License: GNU GENERAL PUBLIC LICENSE, Version 3.0
-                -->
-            </dependency>
-
-            <dependency>
-                <groupId>org.openrdf</groupId>
-                <artifactId>rio</artifactId>
-                <version>1.0.10</version>
-                <!--
-                   License: BSD-style license
                 -->
             </dependency>
 

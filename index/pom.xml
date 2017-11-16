@@ -92,11 +92,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.openrdf</groupId>
-            <artifactId>rio</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-compress</artifactId>
          </dependency>
@@ -109,11 +104,6 @@
         <dependency>
             <groupId>weka</groupId>
             <artifactId>weka</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>trove</groupId>
-            <artifactId>trove</artifactId>
         </dependency>
 
         <dependency>
