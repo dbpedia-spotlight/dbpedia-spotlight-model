@@ -348,18 +348,22 @@
                      License: CDDL v.1.1 andd GPL v.2
                  -->
             </dependency>
-
             <dependency>
-                <groupId>com.sun.grizzly</groupId>
-                <artifactId>grizzly-http</artifactId>
-                <version>1.9.65</version>
+                <groupId>com.sun.jersey</groupId>
+                <artifactId>jersey-bundle</artifactId>
+                <version>${jersey.version}</version>
+                <!--
+                     License: CDDL v.1.1 andd GPL v.2
+                 -->
             </dependency>
 
             <dependency>
-                <groupId>javax.servlet</groupId>
-                <artifactId>javax.servlet-api</artifactId>
-                <version>4.0.0</version>
-                <scope>provided</scope>
+                <groupId>com.sun.grizzly</groupId>
+                <artifactId>grizzly-servlet-webserver</artifactId>
+                <version>1.9.65</version>
+                <!--
+                     License: CDDL v.1.1 andd GPL v.2
+                -->
             </dependency>
 
             <dependency>
