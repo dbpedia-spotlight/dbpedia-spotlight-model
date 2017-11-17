@@ -24,7 +24,8 @@ import org.apache.commons.httpclient.HttpException;
 import org.apache.commons.httpclient.HttpStatus;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.httpclient.params.HttpMethodParams;
-import org.dbpedia.spotlight.log.SpotlightLog;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.dbpedia.spotlight.exceptions.OutputException;
 import org.dbpedia.spotlight.exceptions.SparqlExecutionException;
 import org.dbpedia.spotlight.model.DBpediaResource;
@@ -51,7 +52,7 @@ import java.util.List;
  */
 public class SparqlQueryExecuter {
 
-
+    Log LOG = LogFactory.getLog(this.getClass());
        // Create an instance of HttpClient.
     private static HttpClient client = new HttpClient();
 
@@ -75,8 +76,7 @@ public class SparqlQueryExecuter {
 
 	public List<DBpediaResource> query(String query) throws IOException, OutputException, SparqlExecutionException {
         if (query==null) return new ArrayList<DBpediaResource>();
-		//LOG.debug("--SPARQL QUERY: " + query.replace("\n", " "));
-		//SpotlightLog.debug(SparqlQueryExecuter.class, "--SPARQL QUERY: %s" , query.replace("\n", " ")); 
+		LOG.debug("--SPARQL QUERY: " + query.replace("\n", " "));
 
 		URL url = getUrl(query);
 
@@ -90,7 +90,7 @@ public class SparqlQueryExecuter {
         } catch (JSONException e) {
             throw new OutputException(e+response);
         }
-	//SpotlightLog.debug(SparqlQueryExecuter.class, "-- %s found.", uris.size());
+	LOG.debug(String.format("-- %s found.", uris.size()));
         return uris;
 	}
 
@@ -118,7 +118,7 @@ public class SparqlQueryExecuter {
             int statusCode = client.executeMethod(method);
 
             if (statusCode != HttpStatus.SC_OK) {
-		//SpotlightLog.debug(SparqlQueryExecuter.class,"SparqlQuery failed: %s", method.getStatusLine());
+		LOG.error("SparqlQuery failed: " + method.getStatusLine());
                 throw new SparqlExecutionException(String.format("%s (%s). %s",
                                                                  method.getStatusLine(),
                                                                  method.getURI(),
