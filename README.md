@@ -46,25 +46,25 @@ Go to our [Demonstration](http://dbpedia-spotlight.github.io/demo/) page, copy+p
 
 ### Endpoints
 
-http://model.dbpedia-spotlight.org/{LANGUAGE}/annotate
+http://api.dbpedia-spotlight.org/{LANGUAGE}/annotate
 
-  - English: http://model.dbpedia-spotlight.org/en/annotate
-  - German: http://model.dbpedia-spotlight.org/de/annotate
-  - Dutch: http://model.dbpedia-spotlight.org/nl/annotate
-  - French: http://model.dbpedia-spotlight.org/fr/annotate
-  - Italian: http://model.dbpedia-spotlight.org/it/annotate
-  - Russian: http://model.dbpedia-spotlight.org/ru/annotate
-  - Spanish: http://model.dbpedia-spotlight.org/es/annotate
-  - Portuguese: http://model.dbpedia-spotlight.org/pt/annotate
-  - Hungarian: http://model.dbpedia-spotlight.org/hu/annotate
-  - Turkish:  http://model.dbpedia-spotlight.org/tr/annotate
+  - English: http://api.dbpedia-spotlight.org/en/annotate
+  - German: http://api.dbpedia-spotlight.org/de/annotate
+  - Dutch: http://api.dbpedia-spotlight.org/nl/annotate
+  - French: http://api.dbpedia-spotlight.org/fr/annotate
+  - Italian: http://api.dbpedia-spotlight.org/it/annotate
+  - Russian: http://api.dbpedia-spotlight.org/ru/annotate
+  - Spanish: http://api.dbpedia-spotlight.org/es/annotate
+  - Portuguese: http://api.dbpedia-spotlight.org/pt/annotate
+  - Hungarian: http://api.dbpedia-spotlight.org/hu/annotate
+  - Turkish:  http://api.dbpedia-spotlight.org/tr/annotate
 
 
 #### Call our web service
 
 You can use our demonstration [Web Service](http://github.com/dbpedia-spotlight/dbpedia-spotlight/wiki/Web-service) directly from your application.
 
-    curl http://model.dbpedia-spotlight.org/en/annotate  \
+    curl http://api.dbpedia-spotlight.org/en/annotate  \
       --data-urlencode "text=President Obama called Wednesday on Congress to extend a tax break
       for students included in last year's economic stimulus package, arguing
       that the policy provides more generous assistance." \
@@ -72,7 +72,7 @@ You can use our demonstration [Web Service](http://github.com/dbpedia-spotlight/
 
 or for JSON:
 
-    curl http://model.dbpedia-spotlight.org/en/annotate  \
+    curl http://api.dbpedia-spotlight.org/en/annotate  \
       --data-urlencode "text=President Obama called Wednesday on Congress to extend a tax break
       for students included in last year's economic stimulus package, arguing
       that the policy provides more generous assistance." \
@@ -81,10 +81,10 @@ or for JSON:
 
 #### Run your own server
 
-If you need service reliability and lower response times, you can run DBpedia Spotlight in your own [In-House Server](https://github.com/dbpedia-spotlight/dbpedia-spotlight/wiki/Installation). Just download a model and Spotlight from [here](http://model.dbpedia-spotlight.org) to get started.
+If you need service reliability and lower response times, you can run DBpedia Spotlight in your own [In-House Server](https://github.com/dbpedia-spotlight/dbpedia-spotlight/wiki/Installation). Just download a model and Spotlight from [here](http://downloads.dbpedia-spotlight.org) to get started.
 
     wget http://downloads.dbpedia-spotlight.org/spotlight/dbpedia-spotlight-1.0.0.jar
-    wget http://downloads.dbpedia-spotlight.org/2016-04/en/model/en.tar.gz
+    wget http://downloads.dbpedia-spotlight.org/2016-16/en/model/en.tar.gz
     tar xzf en.tar.gz
     java -jar dbpedia-spotlight-1.0.jar en http://localhost:2222/rest
 
