@@ -26,8 +26,8 @@
         <dbpedia.spotlight.version>1.0</dbpedia.spotlight.version>
 
         <java.compiler.version>1.8</java.compiler.version>
-        <scala.compiler.version>2.10.4</scala.compiler.version>
-        <jersey.version>1.19.3</jersey.version>
+        <scala.compiler.version>2.10.6</scala.compiler.version>
+        <jersey.version>1.19.4</jersey.version>
 
         <heapspace.Xmx.compiler>-Xmx1g</heapspace.Xmx.compiler>
         <heapspace.Xmx.indexer>-Xmx1g</heapspace.Xmx.indexer>
@@ -275,81 +275,45 @@
                 -->
             </dependency>
 
-
-
             <dependency>
-                <groupId>org.apache.solr</groupId>
-                <artifactId>solr-analysis-extras</artifactId>
-                <version>6.5.0</version>
+                <groupId>org.apache.lucene</groupId>
+                <artifactId>lucene-analyzers-common</artifactId>
+                <version>7.1.0</version>
             </dependency>
 
             <dependency>
                 <groupId>commons-lang</groupId>
                 <artifactId>commons-lang</artifactId>
-                <version>2.5</version>
+                <version>2.6</version>
                 <!--
                     License: Apache Software License, Version 2.0
                 -->
+            </dependency>
+
+            <dependency>
+	        <groupId>commons-collections</groupId>
+         	<artifactId>commons-collections</artifactId>
+	        <version>3.2.2</version>
             </dependency>
 
             <dependency>
                 <groupId>commons-io</groupId>
                 <artifactId>commons-io</artifactId>
-                <version>2.4</version>
+                <version>2.6</version>
                 <!--
                     License: Apache Software License, Version 2.0
                 -->
             </dependency>
 
             <dependency>
-                <groupId>com.google.guava</groupId>
-                <artifactId>guava</artifactId>
-                <version>r07</version>
-                <!--
-                  License: Apache Software License, Version 2.0
-                -->
-            </dependency>
-
-            <dependency>
-                <groupId>nekohtml</groupId>
+                <groupId>net.sourceforge.nekohtml</groupId>
                 <artifactId>nekohtml</artifactId>
-                <version>0.9.5</version>
+                <version>1.9.22</version>
                 <!--
                   License: Apache Software License, Version 2.0
                 -->
             </dependency>
 
-            <dependency>
-                <groupId>jcs</groupId>
-                <artifactId>jcs</artifactId>
-                <version>1.3</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>xerces</groupId>
-                        <artifactId>xerces</artifactId>
-                    </exclusion>
-                </exclusions>
-                <!--
-                  License: Apache Software License, Version 2.0
-                -->
-            </dependency>
-
-            <dependency>
-                <groupId>xerces</groupId>
-                <artifactId>xercesImpl</artifactId>
-                <version>2.9.1</version>
-                <!--
-                  License: Apache Software License, Version 2.0
-                -->
-            </dependency>
-            <dependency>
-                <groupId>xerces</groupId>
-                <artifactId>xmlParserAPIs</artifactId>
-                <version>2.6.2</version>
-                <!--
-                  License: Apache Software License, Version 2.0
-                -->
-            </dependency>
             <dependency>
                 <groupId>xml-apis</groupId>
                 <artifactId>xml-apis</artifactId>
@@ -359,24 +323,6 @@
                 -->
             </dependency>
 
-            <dependency>
-                <groupId>xom</groupId>
-                <artifactId>xom</artifactId>
-                <version>1.2.5</version>
-                <!--
-                     License: LGPL
-                -->
-            </dependency>
-
-            <dependency>
-                <groupId>net.sf.json-lib</groupId>
-                <artifactId>json-lib</artifactId>
-                <version>2.4</version>
-                <classifier>jdk15</classifier>
-                <!--
-                    License: Apache Software License, Version 2.0
-                -->
-            </dependency>
 
             <dependency>
                 <groupId>com.sun.jersey</groupId>
@@ -414,7 +360,7 @@
             <dependency>
                 <groupId>com.sun.grizzly</groupId>
                 <artifactId>grizzly-servlet-webserver</artifactId>
-                <version>1.9.48</version>
+                <version>1.9.65</version>
                 <!--
                      License: CDDL v.1.1 andd GPL v.2
                 -->
@@ -423,7 +369,7 @@
             <dependency>
                 <groupId>org.apache.httpcomponents</groupId>
                 <artifactId>httpclient</artifactId>
-                <version>4.2</version>
+                <version>4.5.3</version>
                 <!--
                     License: Apache Software License, Version 2.0
                 -->
@@ -441,7 +387,7 @@
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-compress</artifactId>
-                <version>1.4.1</version>
+                <version>1.15</version>
                 <!--
                     License: Apache Software License, Version 2.0
                 -->
@@ -450,7 +396,7 @@
             <dependency>
                 <groupId>org.json</groupId>
                 <artifactId>json</artifactId>
-                <version>20090211</version>
+                <version>20171018</version>
                 <!--
                     License: http://www.json.org/license.html
                 -->
@@ -460,16 +406,7 @@
             <dependency>
                 <groupId>commons-codec</groupId>
                 <artifactId>commons-codec</artifactId>
-                <version>1.6</version>
-                <!--
-                    License: Apache Software License, Version 2.0
-                -->
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.any23</groupId>
-                <artifactId>apache-any23-core</artifactId>
-                <version>0.7.0-incubating</version>
+                <version>1.11</version>
                 <!--
                     License: Apache Software License, Version 2.0
                 -->
@@ -485,15 +422,6 @@
             </dependency>
 
             <dependency>
-                <groupId>trove</groupId>
-                <artifactId>trove</artifactId>
-                <version>1.1-beta-5</version>
-                <!--
-                  License: Lesser GNU Public License (LGPL)
-                -->
-            </dependency>
-
-            <dependency>
                 <groupId>jdbm</groupId>
                 <artifactId>jdbm</artifactId>
                 <version>3.0-SNAPSHOT</version>
@@ -503,18 +431,9 @@
             </dependency>
 
             <dependency>
-                <groupId>org.apache.mahout</groupId>
-                <artifactId>mahout-collections</artifactId>
-                <version>1.0</version>
-                <!--
-                    License: Apache Software License, Version 2.0
-                -->
-            </dependency>
-
-            <dependency>
                 <groupId>com.esotericsoftware.kryo</groupId>
                 <artifactId>kryo</artifactId>
-                <version>2.20</version>
+                <version>2.21.1</version>
                 <exclusions>
                     <exclusion> <!-- conflicts with asm version of jersey dependency -->
                         <groupId>org.ow2.asm</groupId>
@@ -538,7 +457,7 @@
             <dependency>
                 <groupId>org.codehaus.jackson</groupId>
                 <artifactId>jackson-core-asl</artifactId>
-                <version>1.9.8</version>
+                <version>1.9.13</version>
                 <!--
                           License: Apache Software License, Version 2.0 and
                                     Lesser GNU Public License (LGPL)
@@ -561,7 +480,7 @@
             <dependency>
                 <groupId>com.typesafe.akka</groupId>
                 <artifactId>akka-actor_2.10</artifactId>
-                <version>2.3.4</version>
+                <version>2.3.16</version>
                 <!--
                     License: Apache Software License, Version 2.0
                 -->
@@ -576,28 +495,11 @@
                     License: Apache Software License, Version 2.0
                 -->
             </dependency>
-            <dependency>
-                <groupId>stax</groupId>
-                <artifactId>stax-api</artifactId>
-                <version>1.0.1</version>
-                <!--
-                    License: Apache Software License, Version 2.0
-                -->
-            </dependency>
-            <dependency>
-                <groupId>org.codehaus.jettison</groupId>
-                <artifactId>jettison</artifactId>
-                <version>1.3</version>
-                <!--
-                    License: Apache Software License, Version 2.0
-                -->
-            </dependency>
-
 
             <dependency>
                 <groupId>com.thoughtworks.xstream</groupId>
                 <artifactId>xstream</artifactId>
-                <version>1.3.1</version>
+                <version>1.4.10-java7</version>
             </dependency>
 
             <dependency>
@@ -610,18 +512,9 @@
             </dependency>
 
             <dependency>
-                <groupId>org.openrdf</groupId>
-                <artifactId>rio</artifactId>
-                <version>1.0.10</version>
-                <!--
-                   License: BSD-style license
-                -->
-            </dependency>
-
-            <dependency>
                 <groupId>net.htmlparser.jericho</groupId>
                 <artifactId>jericho-html</artifactId>
-                <version>3.1</version>
+                <version>3.4</version>
                 <!--
                     License: Eclipse Public License - v 1.0 and
                               Lesser GNU Public License (LGPL)
@@ -631,7 +524,7 @@
             <dependency>
                 <groupId>com.thoughtworks.paranamer</groupId>
                 <artifactId>paranamer</artifactId>
-                <version>2.3</version>
+                <version>2.8</version>
                 <!--
                    License: Paranamer is Open Source, and licensed as BSD. It is compatible with commercial/proprietary, GPL, Apache use
                  -->
@@ -658,16 +551,16 @@
             <dependency>
                 <groupId>org.apache.opennlp</groupId>
                 <artifactId>opennlp-tools</artifactId>
-                <version>1.5.3</version>
+                <version>1.8.2</version>
                 <!--
                      License: Apache Software License, Version 2.0
                  -->
             </dependency>
 
             <dependency>
-                <groupId>opennlp</groupId>
-                <artifactId>maxent</artifactId>
-                <version>3.0.0</version>
+                <groupId>org.apache.opennlp</groupId>
+                <artifactId>opennlp-maxent</artifactId>
+                <version>3.0.3</version>
                 <!--
                   License: Apache License V2.0, GNU Library or
                            Lesser General Public License version 2.0 (LGPLv2)
@@ -677,7 +570,7 @@
             <dependency>
                 <groupId>it.unimi.dsi</groupId>
                 <artifactId>fastutil</artifactId>
-                <version>6.3</version>
+                <version>8.1.0</version>
                 <!--
                   License: Apache Software License, Version 2.0
                 -->
@@ -686,7 +579,7 @@
             <dependency>
                 <groupId>hsqldb</groupId>
                 <artifactId>hsqldb</artifactId>
-                <version>1.8.0.1</version>
+                <version>1.8.0.10</version>
                 <!--
                   License: based on BSD License
                 -->
@@ -695,7 +588,7 @@
             <dependency>
                 <groupId>net.sf.opencsv</groupId>
                 <artifactId>opencsv</artifactId>
-                <version>2.0</version>
+                <version>2.3</version>
                 <!--
                   License: Apache Software License, Version 2.0
                 -->
@@ -704,7 +597,7 @@
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
-                <version>4.8.2</version>
+                <version>4.12</version>
                 <!--
                   License: Common Public License - v 1.0
                 -->
@@ -712,29 +605,11 @@
 
 
             <dependency>
-                <groupId>net.liftweb</groupId>
-                <artifactId>lift-json_2.10</artifactId>
-                <version>2.5</version>
-                <!--
-                  License: Apache Software License, Version 2.0
-                -->
-            </dependency>
-
-            <dependency>
                 <groupId>weka</groupId>
                 <artifactId>kea-goss-weka</artifactId>
                 <version>5.0-SNAPSHOT</version>
                 <!--
                   License: GNU GENERAL PUBLIC LICENSE, Version 3.0
-                -->
-            </dependency>
-
-            <dependency>
-                <groupId>edu.umd</groupId>
-                <artifactId>cloud9</artifactId>
-                <version>SNAPSHOT</version>
-                <!--
-                  License: Apache Software License, Version 2.0
                 -->
             </dependency>
 
@@ -770,7 +645,7 @@
             <dependency>
                 <groupId>com.google.collections</groupId>
                 <artifactId>google-collections</artifactId>
-                <version>0.9</version>
+                <version>1.0</version>
             </dependency>
 
             <dependency>
@@ -804,12 +679,6 @@
             </dependency>
 
             <dependency>
-                <groupId>org.mortbay.jetty</groupId>
-                <artifactId>servlet-api</artifactId>
-                <version>2.5.20110712</version>
-            </dependency>
-
-            <dependency>
                 <groupId>org.wiki.harvester.dependency</groupId>
                 <artifactId>sztakipedia-parser-0.1.1b</artifactId>
                 <version>1.0</version>
@@ -819,42 +688,6 @@
                 <groupId>org.knallgrau.utils</groupId>
                 <artifactId>textcat</artifactId>
                 <version>1.0.1</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.uima</groupId>
-                <artifactId>uimaj-core</artifactId>
-                <version>2.4.0</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.uima</groupId>
-                <artifactId>uimaj-cpe</artifactId>
-                <version>2.4.0</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.uima</groupId>
-                <artifactId>uimaj-tools</artifactId>
-                <version>2.4.0</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.uima</groupId>
-                <artifactId>uimaj-document-annotation</artifactId>
-                <version>2.4.0</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.uima</groupId>
-                <artifactId>uimaj-bootstrap</artifactId>
-                <version>2.4.0</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.xmlbeans</groupId>
-                <artifactId>xmlbeans</artifactId>
-                <version>2.4.0</version>
             </dependency>
 
             <dependency>
@@ -879,7 +712,7 @@
             <dependency>
                 <groupId>org.mockito</groupId>
                 <artifactId>mockito-core</artifactId>
-                <version>2.7.22</version>
+                <version>2.12.0</version>
                 <!--
                 License: MIT
                 -->
@@ -889,7 +722,7 @@
             <dependency>
                 <groupId>com.google.code.gson</groupId>
                 <artifactId>gson</artifactId>
-                <version>2.8.1</version>
+                <version>2.8.2</version>
                 <!--
                 License: Apache 2.0
                 -->
@@ -932,11 +765,6 @@
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
-        </repository>
-
-        <repository>
-            <id>opennlp.sf.net</id>
-            <url>http://opennlp.sourceforge.net/maven2/</url>
         </repository>
 
         <repository>

@@ -292,14 +292,6 @@ public class SpotlightConfiguration {
         sparqlMainGraph = config.getProperty("org.dbpedia.spotlight.sparql.graph", "http://dbpedia.org").trim();
 
 
-        String maxCacheSizeString = config.getProperty("jcs.default.cacheattributes.MaxObjects", "").trim();
-        try {
-            maxCacheSize = new Long(maxCacheSizeString.trim());
-        } catch (Exception ignored) {
-            LOG.error(ignored);
-        }
-
-
         /**
          * These configuration parameters are for an alternative way to load DBpediaResources (from an in-memory database instead of Lucene)
          */

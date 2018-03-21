@@ -3,9 +3,9 @@ package org.dbpedia.spotlight.spot
 import java.io._
 
 import com.officedepot.cdap2.collection.CompactHashSet
-import org.apache.log4j.Logger
 import org.dbpedia.spotlight.io.WortschatzParser
 import org.dbpedia.spotlight.model.SurfaceFormOccurrence
+import org.dbpedia.spotlight.log.SpotlightLog
 
 import scala.collection.JavaConversions._
 
@@ -22,8 +22,6 @@ import scala.collection.JavaConversions._
  */
 class NonCommonWordSelector(val filename: String, val load: Boolean = true) extends UntaggedSpotSelector {
 
-    val LOG = Logger.getLogger(this.getClass);
-
     val extension = ".CompactHashSet";
     val file = new File(filename+extension);
 
@@ -34,14 +32,14 @@ class NonCommonWordSelector(val filename: String, val load: Boolean = true) exte
     }
 
     def serialize(commonWords: CompactHashSet[String]) {
-        LOG.info(" saving common words dictionary to disk ")
+        SpotlightLog.info(this.getClass, " saving common words dictionary to disk ")
         val out = new ObjectOutputStream(new FileOutputStream(file))
         out.writeObject(commonWords)
         out.close()
     }
 
     def unserialize = {
-        LOG.info(" loading serialized dictionary of common words ")
+        SpotlightLog.info(this.getClass, " loading serialized dictionary of common words ") 
         var set = new CompactHashSet[String]
         try {
             val in = new ObjectInputStream(new FileInputStream(file))
@@ -51,7 +49,7 @@ class NonCommonWordSelector(val filename: String, val load: Boolean = true) exte
             }
             in.close();
         } catch {
-            case e: Exception => LOG.info("Error loading CommonWords. "+e.getMessage);
+            case e: Exception => SpotlightLog.info(this.getClass, "Error loading CommonWords %s", e.getMessage);
         }
         set
     }

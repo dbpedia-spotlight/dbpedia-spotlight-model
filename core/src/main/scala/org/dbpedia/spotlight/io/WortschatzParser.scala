@@ -19,7 +19,7 @@
 package org.dbpedia.spotlight.io
 
 import com.officedepot.cdap2.collection.CompactHashSet
-import org.apache.log4j.Logger
+import org.dbpedia.spotlight.log.SpotlightLog
 
 import scala.io.Source
 
@@ -29,8 +29,6 @@ import scala.io.Source
  */
 
 object WortschatzParser {
-
-    val LOG = Logger.getLogger(this.getClass)
 
     def parse(filename: String) : CompactHashSet[String] = {
         parse(filename, count => true);
@@ -45,7 +43,7 @@ object WortschatzParser {
     }
 
     def parse(filename: String, condition: Int => Boolean) : CompactHashSet[String] = {
-        LOG.info(" parsing common words file ")
+         SpotlightLog.info(this.getClass, " parsing common words file ");
         // get lines, split in three fields, get the middle one (word)
         val commonWords = new CompactHashSet[String]();
 

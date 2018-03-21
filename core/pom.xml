@@ -50,24 +50,8 @@
         </dependency>
 
         <dependency>
-            <groupId>jcs</groupId>
-            <artifactId>jcs</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>xerces</groupId>
-                    <artifactId>xerces</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-        <dependency>
-            <groupId>xerces</groupId>
-            <artifactId>xercesImpl</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.solr</groupId>
-            <artifactId>solr-analysis-extras</artifactId>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-analyzers-common</artifactId>
         </dependency>
 
         <dependency>
@@ -76,12 +60,12 @@
         </dependency>
 
         <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>nekohtml</groupId>
+            <groupId>net.sourceforge.nekohtml</groupId>
             <artifactId>nekohtml</artifactId>
         </dependency>
 
@@ -96,11 +80,6 @@
         </dependency>
 
         <dependency>
-            <groupId>edu.umd</groupId>
-            <artifactId>cloud9</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>weka</groupId>
             <artifactId>kea-goss-weka</artifactId>
         </dependency>
@@ -108,11 +87,6 @@
         <dependency>
             <groupId>weka</groupId>
             <artifactId>weka</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>net.liftweb</groupId>
-            <artifactId>lift-json_2.10</artifactId>
         </dependency>
 
         <dependency>
@@ -144,8 +118,8 @@
         </dependency>
 
         <dependency>
-            <groupId>opennlp</groupId>
-            <artifactId>maxent</artifactId>
+            <groupId>org.apache.opennlp</groupId>
+            <artifactId>opennlp-maxent</artifactId>
         </dependency>
 
         <dependency>
@@ -180,16 +154,6 @@
         </dependency>
 
         <dependency>
-            <groupId>trove</groupId>
-            <artifactId>trove</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.mahout</groupId>
-            <artifactId>mahout-collections</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-math</artifactId>
         </dependency>
@@ -202,12 +166,6 @@
         <dependency>
             <groupId>org.scalaz</groupId>
             <artifactId>scalaz-core_2.10</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.scala-lang</groupId>
-            <artifactId>scala-actors</artifactId>
-            <version>2.10.5</version>
         </dependency>
 
         <dependency>
