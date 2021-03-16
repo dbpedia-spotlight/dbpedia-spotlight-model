@@ -122,7 +122,7 @@ public class Annotate {
     }
 
     @GET
-    @Produces({"text/turtle", "text/plain", "application/rdf+xml"})
+    @Produces({"application/ld+json", "application/n-triples", "application/rdf+xml", "text/plain", "text/turtle"})
     public Response getNIF(@DefaultValue(SpotlightConfiguration.DEFAULT_TEXT) @QueryParam("text") String text,
 			   @DefaultValue(SpotlightConfiguration.DEFAULT_URL) @QueryParam("url") String inUrl,
 			   @DefaultValue(SpotlightConfiguration.DEFAULT_CONFIDENCE) @QueryParam("confidence") Double confidence,
@@ -140,11 +140,15 @@ public class Annotate {
 	String format = "turtle";
 	String accept = request.getHeader("accept");
 	if (accept.equalsIgnoreCase("text/turtle"))
-	    format = "turtle";
+	    format = "text/turtle";//format = "turtle";
 	else if (accept.equalsIgnoreCase("text/plain"))
-	    format = "ntriples";
+	    format = "text/plain";//format = "ntriples";
+    else if (accept.equalsIgnoreCase("application/n-triples"))
+        format = "application/n-triples";
 	else if (accept.equalsIgnoreCase("application/rdf+xml"))
-	    format = "rdfxml";
+	    format = "application/rdf+xml";//format = "rdfxml";
+	else if (accept.equalsIgnoreCase("application/ld+json"))
+	    format = "application/ld+json";//format = "ld+json";
 
 	try {
 	    return ServerUtils.ok(annotationInterface.getNIF(text, inUrl, confidence, support, dbpediaTypes, sparqlQuery, policy, coreferenceResolution, clientIp, spotterName, disambiguatorName, format, prefix, request.getRequestURL().toString()));
@@ -236,7 +240,7 @@ public class Annotate {
     
     @POST
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    @Produces({"text/turtle", "text/plain", "application/rdf+xml"})
+    @Produces({"text/turtle", "text/plain", "application/rdf+xml", "application/n-triples", "application/ld+json"})
     public Response postNIF(
       @DefaultValue(SpotlightConfiguration.DEFAULT_TEXT) @FormParam("text") String text,
       @DefaultValue(SpotlightConfiguration.DEFAULT_URL) @FormParam("url") String inUrl,

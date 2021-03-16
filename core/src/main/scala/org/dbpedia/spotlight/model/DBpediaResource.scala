@@ -23,6 +23,7 @@ import scala.collection.JavaConversions._
 
 @serializable
 class DBpediaResource(var uri : String,
+                      var namespace : String = "",
                       var support : Int = 0,
                       var prior : Double = 0.0,
                       var types : List[OntologyType] = List[OntologyType]())
@@ -36,15 +37,23 @@ class DBpediaResource(var uri : String,
     uri = if (isEncoded(uri)) uri else WikiUtil.wikiEncode(uri)
 
     def this(uri : String) = {
-        this(uri, 0, 0.0, List[OntologyType]())
+        this(uri, "", 0, 0.0, List[OntologyType]())
+    }
+
+    def this(uri : String, namespace : String) = {
+	this(uri, namespace, 0, 0.0, List[OntologyType]())
     }
 
     def this(uri : String, support : Int) = {
-        this(uri, support, 0.0, List[OntologyType]())
+        this(uri, "",support, 0.0, List[OntologyType]())
     }
 
     def this(uri : String, support : Int, prior : Double) = {
-        this(uri, support, prior, List[OntologyType]())
+        this(uri, "", support, prior, List[OntologyType]())
+    }
+
+    def this(uri : String, support : Int, prior : Double, types : List[OntologyType]) = {
+        this(uri, "", support, prior, types)
     }
 
     override def equals(obj : Any) : Boolean = {
@@ -98,7 +107,10 @@ class DBpediaResource(var uri : String,
         if (isExternalURI) {
             uri
         } else {
-            SpotlightConfiguration.DEFAULT_NAMESPACE + uri
+	    if(namespace == "")
+	    	SpotlightConfiguration.DEFAULT_NAMESPACE + uri
+	    else
+		namespace + uri
         }
     }
 

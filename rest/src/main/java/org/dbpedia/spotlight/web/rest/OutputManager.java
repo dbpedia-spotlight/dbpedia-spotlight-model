@@ -114,7 +114,7 @@ public class OutputManager {
     protected String makeNIF(String text, List<DBpediaResourceOccurrence> occList, String format, String prefix) throws OutputException {
 
         NIFWrapper nif = new NIFWrapper(SpotlightConfiguration.configuration());
-        nif.entityFromResource(occList);
+        nif.entityFromResource(occList, text);
         return nif.getNIF(format);
 
     }

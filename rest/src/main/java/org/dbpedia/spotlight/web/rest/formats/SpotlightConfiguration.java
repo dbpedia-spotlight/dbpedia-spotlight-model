@@ -13,7 +13,9 @@ public class SpotlightConfiguration {
 
     private String spotlightURL = "http://www.dbpedia-spotlight.com";
 
-    private String jsonContext = "http://www.jsonld-context.io/api/v1?ontology=http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core,http://www.w3.org/2005/11/its/rdf";
+    //private String jsonContext = "http://www.jsonld-context.io/api/v1?ontology=http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core,http://www.w3.org/2005/11/its/rdf";
+    private String jsonContext = "https://api.dbpedia-spotlight.org/api/v1/?ontology=http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core,http://www.w3.org/2005/11/its/rdf";
+
 
 
     public static SpotlightConfiguration configuration() {

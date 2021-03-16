@@ -1,6 +1,7 @@
 package org.dbpedia.spotlight.web.rest.formats;
 
 import org.dbpedia.spotlight.model.DBpediaResourceOccurrence;
+import org.dbpedia.spotlight.model.OntologyType;
 import org.dbpedia.spotlight.model.SurfaceFormOccurrence;
 import org.nlp2rdf.NIF;
 import org.nlp2rdf.bean.NIFBean;
@@ -61,26 +62,33 @@ public class NIFWrapper {
         }
     }
 
-    public void entityFromResource ( List<DBpediaResourceOccurrence> occs) {
+    public void entityFromResource ( List<DBpediaResourceOccurrence> occs, String text) {
 
         NIFBean.NIFBeanBuilder entity = new NIFBean.NIFBeanBuilder();
 
 
         if (occs != null) {
-
-            occs.forEach(resourceItem -> {
-                this.context(resourceItem.context().text());
-                entity.mention(resourceItem.surfaceForm().name());
-                entity.beginIndex(resourceItem.textOffset());
-                entity.endIndex(resourceItem.textOffset() + resourceItem.surfaceForm().name().length());
-                entity.annotator(configuration.getSpotlightURL());
-                entity.taIdentRef(resourceItem.resource().getFullUri());
-                //entity.types(resourceItem.resource().types());
-               // entity.score(resourceItem.score());
-                entity.context(baseURI, resourceItem.textOffset(), resourceItem.textOffset() +
-                        resourceItem.surfaceForm().name().length());
-                entities.add(new NIFBean(entity));
-            });
+            if(occs.size() == 0){
+                this.context(text);
+            }else {
+                occs.forEach(resourceItem -> {
+                    this.context(resourceItem.context().text());
+                    entity.mention(resourceItem.surfaceForm().name());
+                    entity.beginIndex(resourceItem.textOffset());
+                    entity.endIndex(resourceItem.textOffset() + resourceItem.surfaceForm().name().length());
+                    entity.annotator(configuration.getSpotlightURL());
+                    entity.taIdentRef(resourceItem.resource().getFullUri());
+                    List<String> listTypes = new ArrayList<String>();
+                    for (OntologyType otype : resourceItem.resource().getTypes()) {
+                        listTypes.add(otype.getFullUri());
+                    }
+                    entity.types(listTypes);
+                    entity.score(resourceItem.similarityScore());
+                    entity.context(baseURI, resourceItem.textOffset(), resourceItem.textOffset() +
+                            resourceItem.surfaceForm().name().length());
+                    entities.add(new NIFBean(entity));
+                });
+            }
         }
 
 
@@ -100,9 +108,9 @@ public class NIFWrapper {
                 entity.beginIndex(resourceItem.textOffset());
                 entity.endIndex(resourceItem.textOffset() + resourceItem.surfaceForm().name().length());
                 entity.annotator(configuration.getSpotlightURL());
-                // entity.taIdentRef(resourceItem.getUri());
+                //entity.taIdentRef(resourceItem.getUri());
                 // entity.types(resourceItem.typesList());
-                // entity.score(resourceItem.score());
+                //entity.score(resourceItem.score());
                 entity.context(baseURI, resourceItem.textOffset(), resourceItem.textOffset() +
                         resourceItem.surfaceForm().name().length());
                 entities.add(new NIFBean(entity));
@@ -116,8 +124,10 @@ public class NIFWrapper {
 
         List<NIFBean> entitiesToProcess = new ArrayList<>(entities.size());
 
-        entitiesToProcess.add(beanContext);
-        entitiesToProcess.addAll(entities);
+        if(beanContext != null) {
+            entitiesToProcess.add(beanContext);
+            entitiesToProcess.addAll(entities);
+        }
 
         NIF nif = new NIF21(entitiesToProcess);
 
@@ -133,6 +143,8 @@ public class NIFWrapper {
             return nif.getJSONLD(configuration.getJsonContext());
         } else if (outputFormat != null && SemanticMediaType.APPLICATION_N_TRIPLES.equalsIgnoreCase(outputFormat)) {
             return nif.getNTriples();
+        } else  if (outputFormat != null && SemanticMediaType.APPLICATION_XML_RDF.equalsIgnoreCase(outputFormat)){
+            return nif.getRDFxml();
         }
 
         return nif.getTurtle();
