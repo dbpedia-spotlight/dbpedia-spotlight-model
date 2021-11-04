@@ -6,7 +6,7 @@ branches:
     - master
 install: /bin/true
 script: 
-	- "mvn clean install"
+    - "mvn clean install"
 notifications:
   email:
     recipients:
