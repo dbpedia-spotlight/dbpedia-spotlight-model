@@ -1,11 +1,12 @@
 language: java
 jdk:
-  - oraclejdk8
+  - openjdk8
 branches:
   only:
     - master
 install: /bin/true
-script: "mvn clean install"
+script: 
+	- "mvn clean install"
 notifications:
   email:
     recipients:
