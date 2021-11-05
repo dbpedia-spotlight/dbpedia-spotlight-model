@@ -893,37 +893,18 @@
                 <!--
                 License: Apache 2.0
                 -->
-            </dependency>
-
-			<!-- JDK8 dependencies -->
-			<dependency>
-				<groupId>com.sun.xml.bind</groupId>
-				<artifactId>jaxb-core</artifactId>
-				<version>2.3.0.1</version>
-			</dependency>
-			<dependency>
-				<groupId>javax.xml.bind</groupId>
-				<artifactId>jaxb-api</artifactId>
-				<version>2.3.1</version>
-			</dependency>
-			<dependency>
-				<groupId>com.sun.xml.bind</groupId>
-				<artifactId>jaxb-impl</artifactId>
-				<version>2.3.1</version>
-			</dependency>
-
         </dependencies>
     </dependencyManagement>
 
 
     <repositories>
-	    <!-- the following repository is not working and generates compilation errors -->	     
-    <!--  <repository>
+	    
+         <repository>
             <id>maven2-repository.dev.java.net</id>
             <name>Java.net Repository for Maven</name>
-            <url>http://download.java.net/maven/2/</url>
+            <url>https://download.java.net/maven/2/</url>
             <layout>default</layout>
-    </repository>-->
+	 </repository>
 
         <repository>
             <id>java.net-Public</id>
@@ -931,22 +912,26 @@
             <url>https://maven.java.net/content/groups/public/</url>
         </repository>
 
+	<!-- Scala-tools is part of repo1.maven. The URL is not working anymore: 
         <repository>
             <id>scala-tools.org</id>
             <name>Scala-tools Maven2 Repository</name>
             <url>http://scala-tools.org/repo-releases/</url>
         </repository>
-
+	-->
+	
+	<!-- https not supported TODO: check if it is required and by who
         <repository>
             <id>anonsvn</id>
             <url>http://anonsvn.icefaces.org/repo/maven2/releases/</url>
         </repository>
-
+	-->
+	
         <repository>
             <id>central</id>
             <name>Maven Repository Switchboard</name>
             <layout>default</layout>
-            <url>http://repo1.maven.org/maven2</url>
+            <url>https://repo1.maven.org/maven2</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
@@ -954,17 +939,20 @@
 
         <repository>
             <id>opennlp.sf.net</id>
-            <url>http://opennlp.sourceforge.net/maven2/</url>
+	    <url>https://repo.clojars.org/</url>
+            <!-- <url>http://opennlp.sourceforge.net/maven2/</url> -->
         </repository>
-
+	
+	 <!-- https not supported TODO: check if it is required and by who
         <repository>
             <id>igetdb.sourceforge</id>
             <url>http://igetdb.sourceforge.net/maven2-repository</url>
         </repository>
+	-->
 
         <repository>
             <id>sonatype</id>
-            <url>http://repository.sonatype.org/content/groups/public/</url>
+            <url>https://repository.sonatype.org/content/groups/public/</url>
         </repository>
 
         <repository>
@@ -985,11 +973,17 @@
         <repository>
             <id>maven.aksw.internal</id>
             <name>University Leipzig, AKSW Maven2 Repository</name>
-            <url>http://maven.aksw.org/archiva/repository/internal</url>
+            <url>https://maven.aksw.org/archiva/repository/internal</url>
+        </repository>
+	
+	<repository>
+            <id>maven-restlet</id>
+            <name>Public online Restlet repository</name>
+            <url>https://maven.restlet.talend.com</url>
         </repository>
 
     </repositories>
-
+<!-- repo1.maven now contains the scala-tools
     <pluginRepositories>
         <pluginRepository>
             <id>scala-tools.org</id>
@@ -997,5 +991,5 @@
             <url>http://scala-tools.org/repo-releases/</url>
         </pluginRepository>
     </pluginRepositories>
-
+-->
 </project>
