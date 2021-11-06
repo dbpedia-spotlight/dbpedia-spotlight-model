@@ -1,5 +1,4 @@
-# DBpedia Spotlight [![Build Status](https://travis-ci.org/dbpedia-spotlight/dbpedia-spotlight-model.svg?branch=master)](https://travis-ci.org/dbpedia-spotlight/dbpedia-spotlight-model)
-
+# DBpedia Spotlight [![spotlight-build](https://github.com/dbpedia-spotlight/dbpedia-spotlight-model/actions/workflows/maven.yml/badge.svg)](https://github.com/dbpedia-spotlight/dbpedia-spotlight-model/actions/workflows/maven.yml)
 
 ### Links
 
