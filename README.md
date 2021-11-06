@@ -4,13 +4,19 @@
 
 website - http://www.dbpedia-spotlight.org
 
+<!-- TODO: update the status service NS
 status service	- http://status.dbpedia-spotlight.org
+-->
 
+<!-- The link is broken
 download service - http://download.dbpedia-spotlight.org
+-->
 
 demo service - http://demo.dbpedia-spotlight.org
 
+<!-- The link is broken
 CI -http://jenkins.dbpedia-spotlight.org
+-->
 
 
 ### General Notes
@@ -40,7 +46,7 @@ DBpedia Spotlight looks for ~3.5M things of unknown or ~320 known types in text 
 
 #### Demonstration
 
-Go to our [Demonstration](http://dbpedia-spotlight.github.io/demo/) page, copy+paste some text and play with the parameters to see how it works.
+Go to our [Demonstration](https://demo.dbpedia-spotlight.org) page, copy+paste some text and play with the parameters to see how it works.
 
 
 ### Endpoints
@@ -80,16 +86,18 @@ or for JSON:
 
 #### Run your own server
 
-If you need service reliability and lower response times, you can run DBpedia Spotlight in your own [In-House Server](https://github.com/dbpedia-spotlight/dbpedia-spotlight/wiki/Installation). Just download a model and Spotlight from [here](http://downloads.dbpedia-spotlight.org) to get started.
+If you need service reliability and lower response times, you can run DBpedia Spotlight in your own [In-House Server](https://hub.docker.com/repository/docker/dbpedia/dbpedia-spotlight) based on Docker. 
+
+<!-- If you need service reliability and lower response times, you can run DBpedia Spotlight in your own [In-House Server](https://github.com/dbpedia-spotlight/dbpedia-spotlight/wiki/Installation). Just download a model and Spotlight from [here](http://downloads.dbpedia-spotlight.org) to get started.
 
     wget http://downloads.dbpedia-spotlight.org/spotlight/dbpedia-spotlight-1.0.0.jar
     wget http://downloads.dbpedia-spotlight.org/2016-16/en/model/en.tar.gz
     tar xzf en.tar.gz
     java -jar dbpedia-spotlight-1.0.jar en http://localhost:2222/rest
-
+-->
 #### Models and data
 
-Models and raw data for most languages are available [here](http://downloads.dbpedia-spotlight.org).
+Models and raw data for most languages are available [here](https://databus.dbpedia.org/dbpedia/spotlight/spotlight-model/).
 
 ## Citation
 
