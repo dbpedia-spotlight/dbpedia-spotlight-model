@@ -33,8 +33,8 @@
         <heapspace.Xmx.indexer>-Xmx1g</heapspace.Xmx.indexer>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-				<spotlight.basedir>${project.basedir}</spotlight.basedir>
-				<gpg.keyname>Spotlight.GPG</gpg.keyname>
+        <spotlight.basedir>${project.basedir}</spotlight.basedir>
+	<gpg.keyname>Spotlight.GPG</gpg.keyname>
     </properties>
 
     <groupId>org.dbpedia.spotlight</groupId>
@@ -42,29 +42,29 @@
     <version>1.0</version>
     <packaging>pom</packaging>
 
-		<name>DBpedia Spotlight annotation framework</name>
-		<description>
-				DBpedia Spotlight is a tool for automatically annotating mentions of DBpedia resources in text, providing a solution for linking unstructured information sources to the Linked Open Data cloud through DBpedia.
-		</description>
-		<url>https://github.com/dbpedia-spotlight/dbpedia-spotlight-model</url>
+    <name>DBpedia Spotlight annotation framework</name>
+    <description>
+	DBpedia Spotlight is a tool for automatically annotating mentions of DBpedia resources in text, providing a solution for linking unstructured information sources to the Linked Open Data cloud through DBpedia.
+    </description>
+    <url>https://github.com/dbpedia-spotlight/dbpedia-spotlight-model</url>
 
-		<licenses>
-  		<license>
-    		<name>The Apache License, Version 2.0</name>
-    		<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-  		</license>
-		</licenses>
+    <licenses>
+       <license>
+       <name>The Apache License, Version 2.0</name>
+       <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+       </license>
+    </licenses>
 
-		<developers>
+    <developers>
         <developer>
             <name>DBpedia Team</name>
             <email>dbpedia-developers@lists.sourceforge.net</email>
             <organization>DBpedia</organization>
             <organizationUrl>http://www.dbpedia.org</organizationUrl>
         </developer>
-		</developers>
+    </developers>
 
-		<scm>
+    <scm>
         <connection>scm:git:git@github.com:dbpedia-spotlight/dbpedia-spotlight-model.git</connection>
         <developerConnection>scm:git:git@github.com:dbpedia-spotlight/dbpedia-spotlight-model.git</developerConnection>
         <url>https://github.com/dbpedia-spotlight/dbpedia-spotlight-model</url>
@@ -82,16 +82,16 @@
                 <plugin>
                     <groupId>net.alchim31.maven</groupId>
                     <artifactId>scala-maven-plugin</artifactId>
-										<version>3.1.5</version>
-										<executions>
+			<version>3.1.5</version>
+			  <executions>
 	                    <execution>
   	                      <id>attach-docs-sources</id>
     	                    <goals>
       	                      <goal>add-source</goal>
         	                    <goal>doc-jar</goal>
           	              </goals>
-            	        </execution>
-              			  </executions>
+            	           </execution>
+		  	</executions>
                     <!--
                         License: LGPL, Version 2.1
                     -->
@@ -231,45 +231,45 @@
                         </goals>
                     </execution>
                 </executions>
-						</plugin>
-						<!--for publishing on Maven Central (Distribution Management and Authentication)-->
-						<plugin>
-      				<groupId>org.sonatype.plugins</groupId>
-      				<artifactId>nexus-staging-maven-plugin</artifactId>
-      				<version>1.6.7</version>
-      				<extensions>true</extensions>
-      				<configuration>
-        				<serverId>ossrh</serverId>
-        				<nexusUrl>https://oss.sonatype.org/</nexusUrl>
-        				<autoReleaseAfterClose>true</autoReleaseAfterClose>
-      				</configuration>
-						</plugin>
-						<!-- javadoc and sources attachments -->
-						<plugin>
-      				<groupId>org.apache.maven.plugins</groupId>
-      				<artifactId>maven-source-plugin</artifactId>
-      				<version>2.2.1</version>
-      				<executions>
-        				<execution>
-          				<id>attach-sources</id>
-          				<goals>
-            				<goal>jar-no-fork</goal>
-          			</goals>
-        				</execution>
-      				</executions>
-    				</plugin>
-						<!--Nexus Staging Maven Plugin for Deployment and Release -->
-						<plugin>
-  						<groupId>org.sonatype.plugins</groupId>
-  						<artifactId>nexus-staging-maven-plugin</artifactId>
-  						<version>1.6.7</version>
-  						<extensions>true</extensions>
-  						<configuration>
-     						<serverId>ossrh</serverId>
-     						<nexusUrl>https://oss.sonatype.org/</nexusUrl>
-     						<autoReleaseAfterClose>true</autoReleaseAfterClose>
-  						</configuration>
-						</plugin>
+	    </plugin>
+	<!--for publishing on Maven Central (Distribution Management and Authentication)-->
+	    <plugin>
+		<groupId>org.sonatype.plugins</groupId>
+		<artifactId>nexus-staging-maven-plugin</artifactId>
+		<version>1.6.7</version>
+		<extensions>true</extensions>
+		<configuration>
+		    <serverId>ossrh</serverId>
+		    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+		    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+		</configuration>
+	     </plugin>
+	<!-- javadoc and sources attachments -->
+	     <plugin>
+	     	<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-source-plugin</artifactId>
+		<version>2.2.1</version>
+		<executions>
+		     <execution>
+		        <id>attach-sources</id>
+		        <goals>
+		           <goal>jar-no-fork</goal>
+		        </goals>
+		     </execution>
+		</executions>
+	      </plugin>
+	<!--Nexus Staging Maven Plugin for Deployment and Release -->
+	      <plugin>
+	          <groupId>org.sonatype.plugins</groupId>
+		  <artifactId>nexus-staging-maven-plugin</artifactId>
+		  <version>1.6.7</version>
+		  <extensions>true</extensions>
+		  <configuration>
+		      <serverId>ossrh</serverId>
+		      <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+		      <autoReleaseAfterClose>true</autoReleaseAfterClose>
+	          </configuration>
+		</plugin>
         </plugins>
     </build>
 
