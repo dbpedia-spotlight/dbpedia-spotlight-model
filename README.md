@@ -19,7 +19,7 @@ CI -http://jenkins.dbpedia-spotlight.org
 -->
 
 
-### General Notes
+## General Notes
 
 Since v1.0, DBpedia Spotlight was split into two versions, under the same API,  as follow:
 
@@ -40,16 +40,46 @@ Keep annotating,
 All the best
 
 
-#### Shedding Light on the Web of Documents
+### Shedding Light on the Web of Documents
 
 DBpedia Spotlight looks for ~3.5M things of unknown or ~320 known types in text and tries to link them to their global unique identifiers in [DBpedia](http://dbpedia.org).
 
-#### Demonstration
+## Compilation
+
+The requirements to compile the DBpedia Spotlight project are as follows:
+
+- Maven 3.1, or later.
+- JDK 1.8
+
+The process to compile the DBpedia Spotlight code to produce the corresponding jar files are as follows:
+
+1. [optional] `export JAVA_HOME=/path/of/the/jdk1.8/` - only required if the default JDK is different
+2. run `mvn package` - this process will take some time
+
+Each module (core, index, rest) will produce the corresponding jar file in the "target" directory, e.g., core/target or index/target. The jar file containing the DBpedia Spotlight annotation service will be in the rest module directory (`rest/target/rest-1.1-jar-with-dependencies.jar`). 
+
+To install the DBpedia Spotlight in the local maven repository, replace the `mvn package` command with the `mvn install` command.
+
+### Testing the DBpedia Spotlight service (the compiled jar file)
+
+To test the produced jar file, download a [language model](https://databus.dbpedia.org/dbpedia/spotlight/spotlight-model/) from the DBpedia Databus, uncompress it and execute the following command: 
+
+```
+java -Dfile.encoding=UTF-8 -Xmx10G -jar rest-1.1-jar-with-dependencies.jar /path/to/the/uncompress/language/model http://0.0.0.0:2222/rest
+```
+
+When the DBpedia Spotlight annotation service is ready, it could be queried through a curl command as follows:
+
+```
+curl http://0.0.0.0:222/rest/annotate --data-urlencode "text=Barack Obama was the president of the United States" - H "Accept: text/turtle"
+```
+
+## Demonstration
 
 Go to our [Demonstration](https://demo.dbpedia-spotlight.org) page, copy+paste some text and play with the parameters to see how it works.
 
 
-### Endpoints
+## Endpoints
 
 https://api.dbpedia-spotlight.org/{LANGUAGE}/annotate
 
@@ -65,7 +95,7 @@ https://api.dbpedia-spotlight.org/{LANGUAGE}/annotate
   - Turkish:  https://api.dbpedia-spotlight.org/tr/annotate
 
 
-#### Call our web service
+## Call our web service
 
 You can use our demonstration [Web Service](http://github.com/dbpedia-spotlight/dbpedia-spotlight/wiki/Web-service) directly from your application.
 
@@ -84,7 +114,7 @@ or for JSON:
       --data "confidence=0.35" \
       -H "Accept: application/json"
 
-#### Run your own server
+## Run your own server
 
 If you need service reliability and lower response times, you can run DBpedia Spotlight in your own [In-House Server](https://hub.docker.com/repository/docker/dbpedia/dbpedia-spotlight) based on Docker. 
 
@@ -95,7 +125,7 @@ If you need service reliability and lower response times, you can run DBpedia Sp
     tar xzf en.tar.gz
     java -jar dbpedia-spotlight-1.0.jar en http://localhost:2222/rest
 -->
-#### Models and data
+## Models and data
 
 Models and raw data for most languages are available [here](https://databus.dbpedia.org/dbpedia/spotlight/spotlight-model/).
 
