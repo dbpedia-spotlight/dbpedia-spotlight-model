@@ -88,7 +88,9 @@ object Helper {
           if (word.endsWith(spl)) {
             List(
               new Span(start, start + word.indexOf(spl)),
-              new Span(start + word.indexOf(spl), start + word.length)
+              //todo this is hacky, better to make it work with:
+              // new Span(start + word.indexOf(spl), start + word.length)
+              new Span(start, start + word.length)
             )
           } else {
             List.empty
