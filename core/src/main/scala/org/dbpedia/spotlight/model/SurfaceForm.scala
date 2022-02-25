@@ -56,6 +56,8 @@ class SurfaceForm(var name : String) extends Serializable
 
     if (totalCount == -1)
       1.0
+    else if (totalCount == 0) // otherwise returns infinite probability
+      0.0
     else
       annotatedCount / totalCount.toDouble
   }

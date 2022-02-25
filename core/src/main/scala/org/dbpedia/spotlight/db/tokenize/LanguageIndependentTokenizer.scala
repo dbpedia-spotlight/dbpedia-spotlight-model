@@ -71,9 +71,32 @@ class LanguageIndependentStringTokenizer(locale: Locale, stemmer: Stemmer, stopW
 
 object Helper {
 
+  trait SpecialisedWordTokeniser {
+    def tokenise(word: String, start: Int): List[Span]
+  }
+
   val normalizations = Map[String, List[(String, String)]](
     "fr" -> List( ("([dDlL])[’']", "$1 ") ), //French def. and indef. article
     "it" -> List( ("([lL]|[uU]n)[’']", "$1 ") ) //Italian def. and indef. article
+  )
+
+  val languageSpecificWordTokeniser = Map(
+    "en" ->
+      new SpecialisedWordTokeniser {
+        def tokenise(word: String, start: Int) = {
+          val spl = "'s"
+          if (word.endsWith(spl)) {
+            List(
+              new Span(start, start + word.indexOf(spl)),
+              //todo this is hacky, better to make it work with:
+              // new Span(start + word.indexOf(spl), start + word.length)
+              new Span(start, start + word.length)
+            )
+          } else {
+            List.empty
+          }
+        }
+      }
   )
 
   def normalize(locale: Locale, text: String): String = {
@@ -103,8 +126,17 @@ object Helper {
     }
 
     while (end != BreakIterator.DONE) {
-      if ((start until end) exists (i => ! Character.isWhitespace(normalizedText.charAt(i))))
+      val spansToAdd = languageSpecificWordTokeniser.get(locale.getLanguage)
+        .map(tokeniser => {
+          val subs = normalizedText.substring(start, end)
+          tokeniser.tokenise(subs, start)
+        }).getOrElse(List.empty)
+
+      spans ++= spansToAdd
+
+      if (spansToAdd.isEmpty && start.until(end).exists(i => !Character.isWhitespace(normalizedText.charAt(i)))) {
         spans += new Span(start, end)
+      }
 
       start = end
       end = it.next()
